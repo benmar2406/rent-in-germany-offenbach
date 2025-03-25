@@ -83,7 +83,7 @@
   #map {
     width: 100%;
     height: 100vh;
-    border-radius: 0;
+    border-radius: 15px;
     position: sticky;
     top: 0;
   }
@@ -174,4 +174,4 @@
       position: relative;
     }
   }
-</style> 
+</style>

@@ -99,13 +99,16 @@
 
         .person-icons-container {
             flex-wrap: wrap;
+            width: 70%;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            margin-bottom: 2rem;
         }
 
         .person-icons-container > div {
             flex-basis: 40%;
         }
-
-       
     }
 
 </style>
