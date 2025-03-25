@@ -3,7 +3,6 @@
     export let coloredIcons = 0;
     export let percentage = 0;
     export let displayPercentage = "";
-    export let displayIncome = "";
     const totalIcons = 100;
 
     $: moneyIcons = Array(totalIcons).fill(null).map((_, index) => ({

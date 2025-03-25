@@ -52,8 +52,8 @@
     }
 
     onMount(() => {
-        selectedHousehold = 0; // one person
-        selectedIncome = 2; // middle income level
+        selectedHousehold = 0; 
+        selectedIncome = 2; 
         displayIncome = data[householdSizes[selectedHousehold]].incomeLevels[selectedIncome];
         updatePercentage();
     });
