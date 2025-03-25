@@ -34,16 +34,16 @@
 
 <style>
     .haushaltsgroesse-container {
-        padding: 1rem;
-        margin: 0 auto;
+        padding: 0;
+        margin: 0;
         height: fit-content;
-        width: 90%;
+        width: 100%;
     }
     
     .person-icons-container {
         display: flex;
-        justify-content: space-around;
-        align-items: start;
+        justify-content: center;
+        align-items: center;
         gap: 1rem;
         width: 100%;
         height: fit-content;
@@ -97,14 +97,15 @@
              padding: 0;
         }
 
-        .icon-container {
-            width: 2.5rem;
-            height: 2.5rem;
-            border: 2px solid #000;
-            border-radius: 50%;
-            padding: 0rem;
-            margin: 0rem;
+        .person-icons-container {
+            flex-wrap: wrap;
         }
+
+        .person-icons-container > div {
+            flex-basis: 40%;
+        }
+
+       
     }
 
 </style>
