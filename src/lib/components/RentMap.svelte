@@ -76,7 +76,7 @@
 
 <div id="map-legend"></div>
 <div id="map">
-  {#if isLoading} <div class="loading-screen"><p>Loading map...<p></div>{/if}
+  {#if isLoading} <div class="loading-screen"><p>Karte läd...<p></div>{/if}
 </div>
 
 <style>
