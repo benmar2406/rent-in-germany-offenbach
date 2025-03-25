@@ -94,6 +94,10 @@ a:hover {
   .map-article-container-1 {
     grid-template-columns: 1fr;
   }
+
+  h1, h2, h3, h4, h5, h6 {
+    width: 90%;
+  }
   
   #map {
     height: 50vh;

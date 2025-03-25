@@ -12,8 +12,8 @@
 </script>
 
 <div class="chart-article-container-2">
-    <p class="income-title">Anteil der Miete am Einkommen:</p>
-    <div class="money-icon-container">
+    <h3 id="income-title" class="sub-titles">Anteil der Miete am Haushaltseinkommen:</h3>
+    <div class="money-icon-grid">
         {#each moneyIcons as { isColored }}
             <div class="icon-wrapper">  
                 <MoneyIcon {isColored} />
@@ -21,7 +21,7 @@
         {/each}
     </div>
     <article class="income-article">
-        <p>Bei einem Einkommen von {displayIncome} werden für die Miete aufgewendet:</p>
+        <p class="rent-percentage-text">Anteil des Einkommens der für die Miete draufgeht:</p>
         <p class="income-percentage" 
             class:high={percentage > 30}
             >{displayPercentage}%</p>
@@ -29,21 +29,14 @@
 </div>
 
 <style>
-    .chart-article-container-2 {
-        padding: 1rem;
-        padding-left: 3rem;
-        margin-top: 0;
-    }
 
-    .money-icon-container {
+    .money-icon-grid {
         display: grid;
-        grid-template-columns: repeat(20, 1fr);
-        gap: 0.3rem;
+        grid-template-columns: repeat(10, 1fr);
+        gap: 0.2rem;
         align-content:flex-start;
         width: fit-content;
-        margin: 2rem auto;
-        margin-bottom: 1rem;
-        padding: 1rem;
+        padding: 0.8rem;
         border: 1px solid red;
     }
 
@@ -64,6 +57,26 @@
 
     .high {
         color: red;
+    }
+
+    .rent-percentage-text {
+        margin: 1.5rem auto;
+    }
+
+    @media (max-width: 768px) {
+        .money-icon-grid {
+            grid-template-columns: repeat(auto-fill, minmax(30px, 1fr));
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .rent-percentage-text {
+            padding: 0 1.7rem;
+        }
+
+        .income-percentage {
+            padding: 0 1.7rem;
+        }
     }
 </style>
 

@@ -7,14 +7,14 @@
     const threePersons = `${base}/images/income-chart/three.png`;
     const fourPersons = `${base}/images/income-chart/four.png`;
 
-    const iconsArray = [[onePerson, "Eine Person"], [twoPersons, "Zwei Personen"], [threePersons, "Drei Personen"], [fourPersons, "Vier Personen aufwärts"]];
+    const iconsArray = [[onePerson, "Eine Person"], [twoPersons, "Zwei Personen"], [threePersons, "Drei Personen"], [fourPersons, "ab 4 Personen"]];
 
     export let handleIconClick;
     export let selectedIndex = -1;
 </script>
 
 <div class="haushaltsgroesse-container">
-    <p class="haushaltsgroesse-title">Wähle die Haushaltsgröße aus:</p>
+    <p class="sub-titles class" id="haushaltsgroesse-title">Wähle die Haushaltsgröße aus:</p>
     <div class="person-icons-container">
         {#each iconsArray as icon, index}
             <div class="icon-container-wrapper">
@@ -35,13 +35,15 @@
 <style>
     .haushaltsgroesse-container {
         padding: 1rem;
+        margin: 0 auto;
         height: fit-content;
+        width: 90%;
     }
     
     .person-icons-container {
         display: flex;
-        justify-content: center;
-        align-items:start;
+        justify-content: space-around;
+        align-items: start;
         gap: 1rem;
         width: 100%;
         height: fit-content;
@@ -72,16 +74,6 @@
         height: 100%;
         object-fit: contain;
     }  
-    
-    .haushaltsgroesse-title {
-        text-align: left;
-        margin-bottom: 0.7rem;
-        width: 100%;
-        display: block;
-        font-family: 'Poppins', sans-serif;
-        font-size: 0.9rem;
-        font-weight: 700;
-    }
 
     .household-size-text {
         text-align: center;
@@ -98,4 +90,21 @@
         align-items: center;
         justify-content: center;
     }
+
+    @media (max-width: 768px) {
+        .haushaltsgroesse-container {
+             margin: auto;
+             padding: 0;
+        }
+
+        .icon-container {
+            width: 2.5rem;
+            height: 2.5rem;
+            border: 2px solid #000;
+            border-radius: 50%;
+            padding: 0rem;
+            margin: 0rem;
+        }
+    }
+
 </style>

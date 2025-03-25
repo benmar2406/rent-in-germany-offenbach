@@ -42,7 +42,7 @@
 <main>
   <div class="map-article-container-1">
     <RentMap />
-    <article>
+    <article class="intro-article">
       <h1>Wohnen in der Stadt - ein Luxus?</h1>
       <p>Die Mieten in deutschen Städten steigen seit Jahren rasant, und für viele wird es immer schwieriger, sich ein Zuhause in urbanen Ballungszentren zu leisten. Ob München, Berlin oder Hamburg – die durchschnittlichen Quadratmeterpreise für Mietwohnungen haben teils astronomische Höhen erreicht.</p>
       <p>In Großstädten ist die Miete oft der größte Kostenfaktor, und gerade für junge Menschen oder Familien mit geringeren Einkommen stellt sich die Frage: Wie viel Geld muss man verdienen, um in einer dieser Städte noch wohnen zu können?</p>
@@ -59,6 +59,11 @@
     margin: 0;
     padding: 0;
     min-height: 100vh;
+  }
+
+  .intro-article {
+    width: 90%;
+    max-width: 700px;
   }
 
   .map-article-container-1 {
@@ -81,10 +86,6 @@
       min-height: auto;
     }
     
-    article {
-      height: auto;
-      overflow-y: visible;
-      padding: 1rem;
-    }
+  
   }
 </style>
