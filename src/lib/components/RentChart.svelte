@@ -1,20 +1,28 @@
 <script>
-  import { onMount } from 'svelte';
+  import { onMount, tick } from 'svelte';
   import * as d3 from 'd3';
 
   export let data;
   let chartContainer;
   let width = 0;
   let height = 0;
+  let hasMounted = false;
+  let tooltip;
 
-  const margin = { top: 20, right: 30, bottom: 40, left: 50 };
+  const margin = { top: 20, right: 50, bottom: 40, left: 50 };
+
+  $: if (hasMounted && width > 0 && height > 0) {
+    drawChart();
+  }
 
   onMount(() => {
-    const observer = new ResizeObserver(entries => {
+    hasMounted = true;
+
+    const observer = new ResizeObserver(async entries => {
       const rect = entries[0].contentRect;
       width = rect.width - margin.left - margin.right;
-      height = 300 - margin.top - margin.bottom; // Adjustable if needed
-      drawChart();
+      height = 300 - margin.top - margin.bottom;
+      await tick();
     });
 
     observer.observe(chartContainer);
@@ -24,6 +32,19 @@
   function drawChart() {
     const svg = d3.select("svg");
     svg.selectAll("*").remove();
+
+    if (!tooltip) {
+      tooltip = d3.select("body")
+        .append("div")
+        .attr("class", "tooltip")
+        .style("position", "absolute")
+        .style("visibility", "hidden")
+        .style("background-color", "white")
+        .style("padding", "5px")
+        .style("border", "1px solid #ccc")
+        .style("border-radius", "4px")
+        .style("font-size", "12px");
+    }
 
     const g = svg
       .attr("width", width + margin.left + margin.right)
@@ -35,13 +56,8 @@
       .domain(d3.extent(data, d => d.Jahr))
       .range([0, width]);
 
-    const y1 = d3.scaleLinear()
-      .domain([0, 140])
-      .range([height, 0]);
-
-    const y2 = d3.scaleLinear()
-      .domain([0, 140])
-      .range([height, 0]);
+    const y1 = d3.scaleLinear().domain([0, 140]).range([height, 0]);
+    const y2 = d3.scaleLinear().domain([0, 140]).range([height, 0]);
 
     const line1 = d3.line()
       .x(d => x(d.Jahr))
@@ -53,47 +69,96 @@
       .y(d => d.Reallohnindex !== null ? y2(d.Reallohnindex) : NaN)
       .curve(d3.curveMonotoneX);
 
-    // ✅ Custom number of ticks
     const numberOfTicks = Math.ceil(data.length / 4);
 
-    // ✅ X axis
+    // X axis
     g.append("g")
       .attr("transform", `translate(0,${height})`)
       .call(d3.axisBottom(x).tickFormat(d3.format("d")).ticks(numberOfTicks))
       .attr("class", "axis-label");
 
-    // ✅ Y1 axis (left)
+    // Y1 axis (left)
     g.append("g")
       .call(d3.axisLeft(y1).ticks(5))
       .attr("class", "axis-label");
 
-    // ✅ Y2 axis (right)
+    // Y2 axis (right)
     g.append("g")
       .attr("transform", `translate(${width},0)`)
       .call(d3.axisRight(y2).ticks(5))
       .attr("class", "axis-label-reallohn");
 
-    // ✅ Lines
+    // Red line: Mietpreisindex
     g.append("path")
       .datum(data)
       .attr("class", "line-miet")
       .attr("fill", "none")
       .attr("stroke", "red")
       .attr("stroke-width", 2)
-      .attr("d", line1);
+      .attr("d", line1)
+      .on("mouseover", () => tooltip.style("visibility", "visible"))
+      .on("mousemove", function (event) {
+        const [xPos] = d3.pointer(event);
+        const xValue = x.invert(xPos);
+        const closest = data.reduce((a, b) =>
+          Math.abs(b.Jahr - xValue) < Math.abs(a.Jahr - xValue) ? b : a
+        );
+        tooltip
+          .html(`Jahr: ${closest.Jahr}<br/>Mietpreisindex: ${closest.Mietpreisindex}`)
+          .style("left", event.pageX + 10 + "px")
+          .style("top", event.pageY + 10 + "px");
+      })
+      .on("mouseout", () => tooltip.style("visibility", "hidden"));
 
+    // Blue line: Reallohnindex
     g.append("path")
       .datum(data.filter(d => d.Reallohnindex !== null))
       .attr("class", "line-reallohn")
       .attr("fill", "none")
       .attr("stroke", "#2196F3")
       .attr("stroke-width", 2)
-      .attr("d", line2);
+      .attr("d", line2)
+      .on("mouseover", () => tooltip.style("visibility", "visible"))
+      .on("mousemove", function (event) {
+        const [xPos] = d3.pointer(event);
+        const xValue = x.invert(xPos);
+        const filtered = data.filter(d => d.Reallohnindex !== null);
+        const closest = filtered.reduce((a, b) =>
+          Math.abs(b.Jahr - xValue) < Math.abs(a.Jahr - xValue) ? b : a
+        );
+        tooltip
+          .html(`Jahr: ${closest.Jahr}<br/>Reallohnindex: ${closest.Reallohnindex}`)
+          .style("left", event.pageX + 10 + "px")
+          .style("top", event.pageY + 10 + "px");
+      })
+      .on("mouseout", () => tooltip.style("visibility", "hidden"));
+
+        // Y-axis labels
+    g.append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("x", -height / 2)
+      .attr("y", - 20)
+      .attr("dy", "-1em")
+      .style("text-anchor", "middle")
+      .style("fill", "red")
+      .text("Mietpreisindex");
+
+    g.append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("x", -height / 2)
+      .attr("y", width + margin.right + 5)
+      .attr("dy", "-1em")
+      .style("text-anchor", "middle")
+      .style("fill", "#2196F3")
+      .text("Reallohnindex");
+
   }
+
+  
 </script>
 
 <div class="charts-container" bind:this={chartContainer}>
-  <h3 id="chart-title" class="sub-titles">Mieten vs. Löhne</h3>
+  <h3 class="sub-titles">Mieten vs. Löhne</h3>
   <div class="chart-wrapper">
     <svg class="rent-index-chart"></svg>
   </div>
@@ -101,8 +166,8 @@
 
 <style>
   .charts-container {
-    margin-top: 2rem;
-    width: 500px;
+    width: 70%;
+    margin: 0 2rem;
   }
 
   .charts-container h3 {
@@ -136,17 +201,25 @@
     height: 300px;
   }
 
-  #chart-title {
-    text-align: left;
-  }
-
   .chart-wrapper {
     width: 100%;
   }
 
-  .rent-index-chart {
-    width: 100%;
-    height: auto;
-    display: block;
+  .tooltip {
+    pointer-events: none;
+    position: absolute;
+    z-index: 10;
   }
-</style> 
+
+  .charts-container {
+    width: 70%;
+    margin: 0 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .charts-container {
+      width: 85%;
+      margin: 0 auto;
+    }
+  }
+</style>
