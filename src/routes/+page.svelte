@@ -67,6 +67,7 @@
     width: 90%;
     max-width: 700px;
     height: fit-content;
+    padding-bottom: 0.3rem;
   }
 
   .map-article-container-1 {
