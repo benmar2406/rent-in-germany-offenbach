@@ -117,6 +117,10 @@
         justify-content: space-between;
     }
 
+    .separator {
+        border-right: 1px solid #ccc;
+    }
+
     .income-chart-container > div {
         flex-basis: 33%;
         min-width: 400px;
