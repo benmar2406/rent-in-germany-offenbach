@@ -2,11 +2,15 @@
   import { onMount } from 'svelte';
   import mapboxgl from 'mapbox-gl';
   import 'mapbox-gl/dist/mapbox-gl.css';
+  
 
   let map;
   let popup;
 
+  let isLoading = true;
+
   onMount(() => {
+
     // Initialize Mapbox
     mapboxgl.accessToken = 'pk.eyJ1IjoiYmVubWFyYmUiLCJhIjoiY203eGI1NnJ2MDNxdDJrc2NneWYzNmgxNSJ9.3Mmxh-ikK_Mfh6hLHGiaGg';
     map = new mapboxgl.Map({
@@ -28,6 +32,7 @@
 
     // Map event handlers
     map.on('load', () => {
+      isLoading = false;
       map.getCanvas().style.cursor = 'default';
       map.addControl(new mapboxgl.NavigationControl());
     });
@@ -70,7 +75,9 @@
 </script>
 
 <div id="map-legend"></div>
-<div id="map"></div>
+<div id="map">
+  {#if isLoading} <div class="loading-screen"><p>Loading map...<p></div>{/if}
+</div>
 
 <style>
   #map {
@@ -92,6 +99,20 @@
     z-index: 1;
     font-family: 'Poppins', sans-serif;
     font-size: 0.875rem;
+  }
+
+  .loading-screen {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .loading-screen p {
+    font-size: 3rem;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
   }
 
   /* These are Mapbox's elements, so they need :global() */
