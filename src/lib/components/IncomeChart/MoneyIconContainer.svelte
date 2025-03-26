@@ -36,7 +36,7 @@
         align-content:flex-start;
         width: fit-content;
         padding: 0.8rem;
-        border: 1px solid red;
+        border: 1px solid #ca3f2d;
     }
 
     .icon-wrapper {
@@ -55,7 +55,7 @@
     }
 
     .high {
-        color: red;
+        color: #ca3f2d;
     }
 
     .rent-percentage-text {

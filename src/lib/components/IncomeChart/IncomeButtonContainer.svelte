@@ -49,7 +49,7 @@
     }
 
     .income-button:hover, .income-button.selected {
-        border-color: red;
+        border-color: #ca3f2d;
         cursor: pointer;
         transform: translateX(5px);
         background-color: #fff5f5;

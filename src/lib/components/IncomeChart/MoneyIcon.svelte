@@ -31,7 +31,7 @@
     }
 
     circle.colored {
-        fill: #f10404;
+        fill: #ca3f2d;
     }
 
     .symbol {

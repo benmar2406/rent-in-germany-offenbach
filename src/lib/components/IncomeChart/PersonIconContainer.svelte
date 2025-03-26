@@ -65,7 +65,7 @@
     }
 
     .icon-container:hover, .icon-container.selected {
-        border-color: red;
+        border-color: #ca3f2d;
         cursor: pointer;
     }
 

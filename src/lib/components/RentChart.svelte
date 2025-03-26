@@ -140,7 +140,7 @@
       .attr("y", - 20)
       .attr("dy", "-1em")
       .style("text-anchor", "middle")
-      .style("fill", "red")
+      .style("fill", "#ca3f2d")
       .text("Mietpreisindex");
 
     g.append("text")
@@ -149,12 +149,10 @@
       .attr("y", width + margin.right + 5)
       .attr("dy", "-1em")
       .style("text-anchor", "middle")
-      .style("fill", "#2196F3")
-      .text("Reallohnindex");
+      .style("fill", "#2db8ca")
+      .text("Reallohnindex (bis 2019)");
 
   }
-
-  
 </script>
 
 <div class="charts-container" bind:this={chartContainer}>
@@ -176,7 +174,7 @@
 
   .chart-wrapper :global(.line) {
     fill: none;
-    stroke: red;
+    stroke: #ca3f2d;
     stroke-width: 5;
   }
 
@@ -186,13 +184,13 @@
 
   .chart-wrapper :global(.line-miet) {
     fill: none;
-    stroke: red;
+    stroke: #ca3f2d;
     stroke-width: 4;
   }
 
   .chart-wrapper :global(.line-reallohn) {
     fill: none;
-    stroke: #2196F3;
+    stroke: #2db8ca;
     stroke-width: 4;
   }
 
@@ -203,12 +201,6 @@
 
   .chart-wrapper {
     width: 100%;
-  }
-
-  .tooltip {
-    pointer-events: none;
-    position: absolute;
-    z-index: 10;
   }
 
   .charts-container {
