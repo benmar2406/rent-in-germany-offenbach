@@ -2,6 +2,9 @@
   import RentMap from '$lib/components/RentMap.svelte';
   import RentChart from '$lib/components/RentChart.svelte';
   import IncomeChart from '$lib/components/IncomeChart/IncomeChart.svelte';
+  import ScrollArticle1 from '$lib/components/scrollArticle_1/ScrollArticle1.svelte';
+  import ScrollArticle from '$lib/components/scrollArticle_2/ScrollArticle.svelte';
+  import Conclusion from '$lib/components/Conclusion.svelte';
 
   const data = [
     { "Jahr": 1991, "Mietpreisindex": 56.7, "Reallohnindex": 93 },
@@ -40,18 +43,21 @@
 </script>
 
 <main>
+  <ScrollArticle1 />
   <div class="map-article-container-1">
     <RentMap />
     <div>
       <article class="intro-article">
-        <h1>Wohnen in der Stadt - ein Luxus?</h1>
-        <p>Die Mieten in deutschen Städten steigen seit Jahren rasant, und für viele wird es immer schwieriger, sich ein Zuhause in urbanen Ballungszentren zu leisten. Ob München, Berlin oder Hamburg – die durchschnittlichen Quadratmeterpreise für Mietwohnungen haben teils astronomische Höhen erreicht.</p>
-        <p>In Großstädten ist die Miete oft der größte Kostenfaktor, und gerade für junge Menschen oder Familien mit geringeren Einkommen stellt sich die Frage: Wie viel Geld muss man verdienen, um in einer dieser Städte noch wohnen zu können?</p>
+        <h2>Stadt oder Land – eine Frage des Preises?</h2>
+        <p>Doch wie stark unterscheidet sich das Leben in der Stadt tatsächlich vom Wohnen auf dem Land? Ein Blick auf die Mietpreise zeigt: In urbanen Zentren sind die Kosten pro Quadratmeter oft doppelt so hoch wie in ländlichen Regionen. Während in Großstädten das Wohnen zur finanziellen Belastung wird, bleibt es auf dem Land für viele noch erschwinglich.</p>
+        <p>Gleichzeitig wächst die Schere zwischen Löhnen und Mieten: In vielen Städten steigen die Mietpreise deutlich schneller als die Einkommen. Die folgenden Grafiken machen deutlich, wie sich diese Entwicklung über die letzten Jahre zugespitzt hat – und welche Regionen besonders betroffen sind.</p>
       </article>
       <RentChart {data} />
     </div>
   </div>
   <IncomeChart />
+  <ScrollArticle />
+  <Conclusion />
 </main>
 
 <style>
@@ -75,6 +81,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 0;
     margin: 0;
+    margin-bottom: 5rem;
     min-height: 100vh;
   }
 

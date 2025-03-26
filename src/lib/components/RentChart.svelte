@@ -165,11 +165,11 @@
 <style>
   .charts-container {
     width: 70%;
-    margin: 0 2rem;
+    margin: 4rem 2rem;
   }
 
   .charts-container h3 {
-    margin-bottom: 1.5rem;
+    margin: 1.5rem auto;
   }
 
   .chart-wrapper :global(.line) {

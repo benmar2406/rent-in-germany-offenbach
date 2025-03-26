@@ -73,8 +73,6 @@
     });
   });
 </script>
-
-<div id="map-legend"></div>
 <div id="map">
   {#if isLoading} <div class="loading-screen"><p>Karte läd...<p></div>{/if}
 </div>
@@ -140,13 +138,13 @@
   }
 
   :global(#regio3) {
-    margin: 2px 0;
+    margin: 0;
     font-size: 0.9rem;
     padding: 0;
   }
 
   :global(#location-information) {
-    margin: 10px 0;
+    margin: 0;
   }
   
   :global(#plz) {
@@ -157,15 +155,18 @@
 
   :global(#rent-price-info) {
     margin: 0.8rem 0;
+    margin-bottom: 0;
     font-size: 0.9rem;
     line-height: 1.2rem;
     
   }
-
   :global(#rent-price) {
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
     font-size: 2rem;
+    margin: 0;
+    padding: 0;
+
   }
 
   @media (max-width: 768px) {
