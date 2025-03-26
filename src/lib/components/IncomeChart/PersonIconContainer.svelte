@@ -93,8 +93,8 @@
 
     @media (max-width: 768px) {
         .haushaltsgroesse-container {
-             margin: auto;
-             padding: 0;
+            margin: auto;
+            padding: 0;
         }
 
         .person-icons-container {
