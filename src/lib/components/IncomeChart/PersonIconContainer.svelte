@@ -53,7 +53,8 @@
     .icon-container {
         width: 4rem;
         height: 4rem;
-        border: 4px solid #000;
+        border: 5px solid #000;
+        background-color: transparent;
         border-radius: 50%;
         padding: 0.5rem;
         margin: 0.5rem;
