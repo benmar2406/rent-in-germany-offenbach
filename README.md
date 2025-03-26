@@ -3,8 +3,8 @@
 Interactive visualizations and maps depicting topics around rent prices and income in Germany built with Svelte. 
 
 ## Visualization & Map Libraries
-** Mapbox
-** D3
+* Mapbox
+* D3
   
 
 ## Prerequisites
