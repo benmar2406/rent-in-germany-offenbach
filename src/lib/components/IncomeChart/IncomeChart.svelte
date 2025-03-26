@@ -121,33 +121,6 @@
         padding-left: 0.3rem;
     }
 
-    .income-article {
-        width: 100%;
-        padding: 0;
-        margin: 0;
-    }
-
-    .legende {
-        background-color: #f4f4f4;
-        border-left: 4px solid #888;
-        padding: 1rem 1.5rem;
-        margin-top: 2rem;
-        border-radius: 6px;
-        font-size: 0.95rem;
-        line-height: 1.6;
-        }
-
-    .legende h4 {
-        margin-top: 0;
-        margin-bottom: 0.5rem;
-        font-size: 1.1rem;
-        font-weight: 600;
-        }
-
-    .legende p {
-        margin: 0.5rem 0;
-    }
-
     :global(.sub-titles) {
         text-align: center;
     }
