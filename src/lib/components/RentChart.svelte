@@ -170,6 +170,7 @@
 <style>
   .charts-container {
     width: 70%;
+    max-width: 500px;
     margin: 4rem 2rem;
   }
 
