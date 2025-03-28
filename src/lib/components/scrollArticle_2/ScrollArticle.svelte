@@ -55,7 +55,7 @@
   }
 
   .step {
-    height: 60vh;
+    height: 80vh;
     display: flex;
     place-items: center;
     justify-content: center;
@@ -97,5 +97,9 @@
     .section-container {
       flex-direction: column-reverse;
     }
+
+    .step {
+    height: 95vh;
+  }
   }
 </style>

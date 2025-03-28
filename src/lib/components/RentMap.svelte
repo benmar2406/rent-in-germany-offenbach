@@ -12,7 +12,7 @@
   onMount(() => {
 
     // Initialize Mapbox
-    mapboxgl.accessToken = 'pk.eyJ1IjoiYmVubWFyYmUiLCJhIjoiY203eGI1NnJ2MDNxdDJrc2NneWYzNmgxNSJ9.3Mmxh-ikK_Mfh6hLHGiaGg';
+    mapboxgl.accessToken = 'pk.eyJ1IjoiYmVubWFyYmUiLCJhIjoiY204ZGdqbmk2MjIxcjJrczd5cjhnOWc5ZiJ9.aNWSLi175awDsnHX7mZIlQ';
     map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/benmarbe/cm8bs3mv900gf01s96g49btrq',
@@ -81,22 +81,7 @@
   #map {
     width: 100%;
     height: 100vh;
-    border-radius: 15px;
-    position: sticky;
     top: 0;
-  }
-
-  #map-legend {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    background: white;
-    padding: 10px;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    z-index: 1;
-    font-family: 'Poppins', sans-serif;
-    font-size: 0.875rem;
   }
 
   .loading-screen {
@@ -171,8 +156,8 @@
 
   @media (max-width: 768px) {
     #map {
-      height: 50vh;
-      position: relative;
+      height: 80vh;
     }
+
   }
 </style>

@@ -7,15 +7,14 @@
   let value;
 
   const steps = [
-		"<h1 class='main-title'>Wohnen in der Stadt<br><span>ein Luxus?<span></h1>",
+		"<h1 class='main-title'>Wohnen in der Stadt<br><span>Ein Luxus?<span></h1>",
     "<p>Die Mieten in deutschen Städten steigen seit Jahren rasant, und für viele wird es immer schwieriger, sich ein Zuhause in urbanen Ballungszentren zu leisten. Ob München, Berlin oder Hamburg – die durchschnittlichen Quadratmeterpreise für Mietwohnungen haben teils astronomische Höhen erreicht.</p>",
     "<p>In Großstädten ist die Miete oft der größte Kostenfaktor, und gerade für junge Menschen oder Familien mit geringeren Einkommen stellt sich die Frage: Wie viel Geld muss man verdienen, um in einer dieser Städte noch wohnen zu können?</p>",
   ];
 </script>
 
 <section class="scroll-section">
-    <div class="background-image-1"></div>
-  
+  <div class="background-image-1"></div>
     <div class="section-container">
       <div class="steps-container">
         <Scrolly bind:value>
@@ -26,7 +25,7 @@
           {/each}
         </Scrolly>
       </div>
-    </div>
+  </div>
 </section>
   
 
@@ -47,17 +46,17 @@
     font-style: italic;
   }
 
-  .background-image-1 {
-      position: sticky;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      background-image: url('/images/skyscrapers.jpg'); 
-      background-size: cover;
-      background-position: center;
-      z-index: -1; 
-    }
+.background-image-1 {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: url('/images/skyscrapers.jpg'); 
+    background-size: cover;
+    background-position: center;
+    z-index: -1; 
+  }
 	
 
   .section-container {
@@ -68,7 +67,7 @@
   }
 
   .step {
-    height: 60vh;
+    height: 80vh;
     display: flex;
     place-items: center;
     justify-content: center;
@@ -114,5 +113,11 @@
     .section-container {
       flex-direction: column-reverse;
     }
+
+    .step {
+      height: 95vh;
+  }
+
+
   }
 </style>

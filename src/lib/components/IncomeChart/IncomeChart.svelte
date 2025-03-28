@@ -110,24 +110,13 @@
 
     .income-chart-container > div {
         flex-basis: 33%;
-        min-width: 400px;
-    }
-
-   :global(.sub-titles) {
-        font-size: 1.2rem;
-        margin-bottom: 1.8rem;
-        font-family: 'Poppins', sans-serif;
-        font-weight: 700;
-        padding-left: 0.3rem;
-    }
-
-    :global(.sub-titles) {
-        text-align: center;
-    }
+        min-width: 390px;
+    } 
 
     @media (max-width: 768px) {
         .income-chart-container {
             flex-direction: column;
+            margin-top: 1rem;
         }
 
         .title-einkommen {
@@ -143,8 +132,16 @@
             min-width: auto;
         }
 
-        .income-article {
-            padding: 1rem;
+        :global(.sub-titles) {
+            text-align: center;
+        }
+
+        .separator {
+            border-right: 0;
+        }
+
+        .controls-container {
+            display: flex;
         }
 
     }

@@ -9,20 +9,21 @@
 
     const iconsArray = [[onePerson, "Eine Person"], [twoPersons, "Zwei Personen"], [threePersons, "Drei Personen"], [fourPersons, "ab 4 Personen"]];
 
-    export let handleIconClick;
-    export let selectedIndex = -1;
+   
+    let { handleIconClick, selectedIndex } =$props();
+    
 </script>
 
-<div class="haushaltsgroesse-container">
+<div class="household-container">
     <p class="sub-titles class" id="haushaltsgroesse-title">Wähle die Haushaltsgröße aus:</p>
-    <div class="person-icons-container">
+    <div class="person-icons-grid">
         {#each iconsArray as icon, index}
             <div class="icon-container-wrapper">
                 <button 
                     class="icon-container" 
                     class:selected={index === selectedIndex}
-                    on:click={() => handleIconClick(index)}
-                    on:keydown={(e) => e.key === 'Enter' && handleIconClick(index)}
+                    onclick={() => handleIconClick(index)}
+                    onkeydown={(e) => e.key === 'Enter' && handleIconClick(index)}
                 >
                     <img src={icon[0]} alt="Person Icon" />
                 </button>
@@ -33,14 +34,14 @@
 </div>
 
 <style>
-    .haushaltsgroesse-container {
+    .household-container {
         padding: 0;
         margin: 0;
         height: fit-content;
         width: 100%;
     }
     
-    .person-icons-container {
+    .person-icons-grid {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -93,22 +94,32 @@
     }
 
     @media (max-width: 768px) {
-        .haushaltsgroesse-container {
-            margin: auto;
-            padding: 0;
+        .household-container {
+            margin: 0;
+            padding: 0.5rem;
         }
 
-        .person-icons-container {
-            flex-wrap: wrap;
-            width: 70%;
+        .person-icons-grid {
+            align-items: start;
             justify-content: center;
-            align-items: center;
-            margin: auto;
-            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            margin: 0.1rem;
         }
 
-        .person-icons-container > div {
-            flex-basis: 40%;
+        .person-icons-grid > div {
+            flex-basis: 30%;
+        }
+
+        .icon-container {
+            width: 3.3rem;
+            height: 3.3rem;
+            border: 5px solid #000;
+            padding: 0.2rem;
+            margin: 0.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: border-color 0.3s ease;
         }
     }
 

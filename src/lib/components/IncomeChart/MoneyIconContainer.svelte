@@ -71,10 +71,12 @@
 
         .rent-percentage-text {
             padding: 0 1.7rem;
+            text-align: center;
         }
 
         .income-percentage {
-            padding: 0 1.7rem;
+           text-align: center;
+
         }
     }
 </style>

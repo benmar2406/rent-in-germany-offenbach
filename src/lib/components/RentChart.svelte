@@ -56,8 +56,13 @@
       .domain(d3.extent(data, d => d.Jahr))
       .range([0, width]);
 
-    const y1 = d3.scaleLinear().domain([0, 140]).range([height, 0]);
-    const y2 = d3.scaleLinear().domain([0, 140]).range([height, 0]);
+    const y1 = d3.scaleLinear()
+      .domain([0, 140])
+      .range([height, 0]);
+    
+    const y2 = d3.scaleLinear()
+      .domain([0, 140])
+      .range([height, 0]);
 
     const line1 = d3.line()
       .x(d => x(d.Jahr))
@@ -146,7 +151,7 @@
     g.append("text")
       .attr("transform", "rotate(-90)")
       .attr("x", -height / 2)
-      .attr("y", width + margin.right + 5)
+      .attr("y", width + margin.right + 12)
       .attr("dy", "-1em")
       .style("text-anchor", "middle")
       .style("fill", "#2db8ca")
@@ -156,7 +161,7 @@
 </script>
 
 <div class="charts-container" bind:this={chartContainer}>
-  <h3 class="sub-titles">Mieten vs. Löhne</h3>
+  <h3 class="sub-titles" id="chart-title">Mieten vs. Löhne</h3>
   <div class="chart-wrapper">
     <svg class="rent-index-chart"></svg>
   </div>
@@ -169,7 +174,7 @@
   }
 
   .charts-container h3 {
-    margin: 1.5rem auto;
+    margin: 1rem auto;
   }
 
   .chart-wrapper :global(.line) {
@@ -210,7 +215,7 @@
 
   @media (max-width: 768px) {
     .charts-container {
-      width: 85%;
+      width: 95%;
       margin: 0 auto;
     }
   }

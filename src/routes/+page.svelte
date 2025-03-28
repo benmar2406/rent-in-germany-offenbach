@@ -49,8 +49,8 @@
     <div>
       <article class="intro-article">
         <h2>Stadt oder Land – eine Frage des Preises?</h2>
-        <p>Doch wie stark unterscheidet sich das Leben in der Stadt tatsächlich vom Wohnen auf dem Land? Ein Blick auf die Mietpreise zeigt: In urbanen Zentren sind die Kosten pro Quadratmeter oft doppelt so hoch wie in ländlichen Regionen. Während in Großstädten das Wohnen zur finanziellen Belastung wird, bleibt es auf dem Land für viele noch erschwinglich.</p>
-        <p>Gleichzeitig wächst die Schere zwischen Löhnen und Mieten: In vielen Städten steigen die Mietpreise deutlich schneller als die Einkommen. Die folgenden Grafiken machen deutlich, wie sich diese Entwicklung über die letzten Jahre zugespitzt hat – und welche Regionen besonders betroffen sind.</p>
+        <p>Ein Blick auf die Mietpreise zeigt: In urbanen Zentren sind die Kosten pro Quadratmeter oft doppelt so hoch wie in ländlichen Regionen. Während in Großstädten das Wohnen zur finanziellen Belastung wird, bleibt es auf dem Land für viele noch erschwinglich.</p>
+        <p>Gleichzeitig wächst die Schere zwischen Löhnen und Mieten: In vielen Städten steigen die Mietpreise deutlich schneller als die Einkommen.</p>
       </article>
       <RentChart {data} />
     </div>
@@ -96,7 +96,11 @@
       grid-template-columns: 1fr;
       min-height: auto;
     }
-    
-  
+
+    .intro-article {
+      margin: 0.3rem;
+      padding: 0.5rem;
+    }
   }
+  
 </style>

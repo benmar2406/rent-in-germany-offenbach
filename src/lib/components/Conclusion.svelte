@@ -1,12 +1,14 @@
 <section class="conclusion">
     <div class="background-image-3"></div>
-    <p>Wie kann Wohnen gerecht gestaltet werden?</p>
+    <p>Was braucht es, damit Wohnen wieder möglich wird – statt unerschwinglich?</p>
 </section>
 
 <style>
 
     .conclusion {
         position: relative;
+        width: 100%;
+        text-align: center;
     }
 
     .conclusion p {
@@ -42,6 +44,5 @@
         background-color: rgba(0, 0, 0, 0.5); 
         z-index: 1;
 }
-
 
 </style>

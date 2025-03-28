@@ -64,13 +64,14 @@
 
         .income-container {
             margin: 0;
+            border-left: solid 1px grey;
         }
 
         .income-container {
             padding: 0.5rem;
             height: fit-content;
-            margin: 0 auto;
-        }
+            margin: auto;
+    }
 
     }
 
