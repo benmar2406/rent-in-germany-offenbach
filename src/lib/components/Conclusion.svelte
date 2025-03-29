@@ -1,9 +1,9 @@
 <script>
   import { onMount } from 'svelte';
   import typewriter from '../customTransitions/typewriterTransition.js';
+  import intersectionObserver from '$lib/customTransitions/intersectionObserver.js';
 
   let elementToObserve;
-  let isVisible = false;
 
 
   onMount(() => {
@@ -11,11 +11,11 @@
       const observer = new IntersectionObserver(([entry]) => {
         if (entry.isIntersecting) {
           isVisible = true;
-          observer.disconnect(); // Stop observing once the animation is triggered
+          observer.disconnect(); 
         }
-      });
+    });
 
-      observer.observe(elementToAnimate);
+      observer.observe(elementToObserve);
 
       return () => {
         observer.disconnect();
@@ -30,7 +30,7 @@
     class="background-image-3">
     </div>
   {#if isVisible}
-    <p in:typewriter>
+    <p transition:typewriter>
       Was braucht es, damit Wohnen wieder möglich wird – statt unerschwinglich?
     </p>
   {/if}
