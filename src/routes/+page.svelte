@@ -1,4 +1,5 @@
 <script>
+  import ScrollProgress from '$lib/components/ScrollProgress.svelte';
   import RentMap from '$lib/components/RentMap.svelte';
   import RentChart from '$lib/components/RentChart.svelte';
   import IncomeChart from '$lib/components/IncomeChart/IncomeChart.svelte';
@@ -41,7 +42,7 @@
     { "Jahr": 2022, "Mietpreisindex": 137.9, "Reallohnindex": null }
   ];
 </script>
-
+<ScrollProgress />
 <main>
   <ScrollArticle1 />
   <div class="map-article-container-1">

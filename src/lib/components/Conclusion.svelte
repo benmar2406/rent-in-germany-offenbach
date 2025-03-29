@@ -2,12 +2,12 @@
   import { onMount } from 'svelte';
   import typewriter from '../customTransitions/typewriterTransition.js';
 
-  let elementToAnimate;
+  let elementToObserve;
   let isVisible = false;
 
 
   onMount(() => {
-    if (elementToAnimate) {
+    if (elementToObserve) {
       const observer = new IntersectionObserver(([entry]) => {
         if (entry.isIntersecting) {
           isVisible = true;
@@ -25,7 +25,10 @@
 </script>
 
 <section class="conclusion">
-  <div bind:this={elementToAnimate} class="background-image-3"></div>
+  <div 
+    bind:this={elementToObserve} 
+    class="background-image-3">
+    </div>
   {#if isVisible}
     <p in:typewriter>
       Was braucht es, damit Wohnen wieder möglich wird – statt unerschwinglich?
