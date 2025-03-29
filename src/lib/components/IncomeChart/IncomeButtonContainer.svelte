@@ -11,7 +11,7 @@
             <button 
                 class="income-button"
                 class:selected={index === selectedIndex}
-                on:click={() => handleIncomeClick(index)}
+                onclick={() => handleIncomeClick(index)}
             >
                 {level}
             </button>

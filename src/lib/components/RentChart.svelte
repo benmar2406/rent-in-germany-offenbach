@@ -1,8 +1,9 @@
 <script>
-  import { onMount, tick } from 'svelte';
+  import { onMount } from 'svelte';
   import * as d3 from 'd3';
 
   export let data;
+
   let chartContainer;
   let width = 0;
   let height = 0;
@@ -11,18 +12,17 @@
 
   const margin = { top: 20, right: 50, bottom: 40, left: 50 };
 
-  $: if (hasMounted && width > 0 && height > 0) {
-    drawChart();
-  }
-
   onMount(() => {
     hasMounted = true;
+    width = chartContainer.clientWidth - margin.left - margin.right;
+    height = 300 - margin.top - margin.bottom;
+    drawChart();
 
-    const observer = new ResizeObserver(async entries => {
+    const observer = new ResizeObserver(entries => {
       const rect = entries[0].contentRect;
       width = rect.width - margin.left - margin.right;
       height = 300 - margin.top - margin.bottom;
-      await tick();
+      drawChart();
     });
 
     observer.observe(chartContainer);
@@ -30,7 +30,9 @@
   });
 
   function drawChart() {
-    const svg = d3.select("svg");
+    if (!hasMounted || width <= 0 || height <= 0) return;
+
+    const svg = d3.select(chartContainer).select("svg");
     svg.selectAll("*").remove();
 
     if (!tooltip) {
@@ -59,7 +61,7 @@
     const y1 = d3.scaleLinear()
       .domain([0, 140])
       .range([height, 0]);
-    
+
     const y2 = d3.scaleLinear()
       .domain([0, 140])
       .range([height, 0]);
@@ -138,7 +140,7 @@
       })
       .on("mouseout", () => tooltip.style("visibility", "hidden"));
 
-        // Y-axis labels
+    // Y-axis labels
     g.append("text")
       .attr("transform", "rotate(-90)")
       .attr("x", -height / 2)
@@ -156,7 +158,6 @@
       .style("text-anchor", "middle")
       .style("fill", "#2db8ca")
       .text("Reallohnindex (bis 2019)");
-
   }
 </script>
 

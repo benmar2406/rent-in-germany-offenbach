@@ -132,10 +132,6 @@
             min-width: auto;
         }
 
-        :global(.sub-titles) {
-            text-align: center;
-        }
-
         .separator {
             border-right: 0;
         }
