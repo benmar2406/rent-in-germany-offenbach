@@ -23,7 +23,6 @@
     });
 
     observer.observe(chartContainer);
-    return () => observer.disconnect();
 
     tooltip = d3.select("body")
       .append("div")
@@ -35,6 +34,9 @@
       .style("border", "1px solid #ccc")
       .style("border-radius", "4px")
       .style("font-size", "12px");
+
+    return () => observer.disconnect();
+
   });
 
   $: innerWidth = width - marginLeft - marginRight;
