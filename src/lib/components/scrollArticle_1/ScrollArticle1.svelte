@@ -4,7 +4,7 @@
 	
   import Scrolly from "./Scrolly.svelte";
   	
-  let value;
+  let value = $state(0);
 
   const steps = [
 		"<h1 class='main-title'>Wohnen in der Stadt<br><span>Ein Luxus?<span></h1>",
@@ -30,9 +30,7 @@
   
 
 <style>
-	:global(body) {
-		overflow-x: hidden;
-	}
+
   
   :global(.main-title) {
     text-align: center;

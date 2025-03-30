@@ -1,22 +1,25 @@
 <script>
-  import { onMount } from 'svelte';
+	
+	let scrollProgress = $state(0);
 
-  let scrollProgress = 0;
+	$effect(() => {
+		const handleScroll = () => {
+			const scrollTop = document.documentElement.scrollTop;
+			const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+			scrollProgress = (scrollTop / scrollHeight) * 100;
+		};
 
-  const handleScroll = () => {
-    const scrollTop = document.documentElement.scrollTop;
-    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    scrollProgress = (scrollTop / scrollHeight) * 100;
-  };
+		window.addEventListener('scroll', handleScroll);
+		handleScroll();
 
-  onMount(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  });
+		return () => window.removeEventListener('scroll', handleScroll);
+	});
 </script>
 
+
+
 <div class="progress-container">
-  <div class="progress-bar" style="width: {scrollProgress}%;"></div>
+  <div class="progress-bar" style:width={`${scrollProgress}%`}></div>
 </div>
 
 <style>
@@ -35,5 +38,5 @@
     background-color: #ca3f2d; 
     transition: width 0.1s ease-out;
   }
-
+  
 </style>

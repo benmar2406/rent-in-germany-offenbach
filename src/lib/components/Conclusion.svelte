@@ -1,40 +1,25 @@
 <script>
   import { onMount } from 'svelte';
   import typewriter from '../customTransitions/typewriterTransition.js';
-  import intersectionObserver from '$lib/customTransitions/intersectionObserver.js';
+  import { useVisibilityObserver } from '$lib/customHooks/useVisibilityObserver.svelte.js';
 
   let elementToObserve;
-
+  let observer; // This will hold our reactive hook
 
   onMount(() => {
-    if (elementToObserve) {
-      const observer = new IntersectionObserver(([entry]) => {
-        if (entry.isIntersecting) {
-          isVisible = true;
-          observer.disconnect(); 
-        }
-    });
-
-      observer.observe(elementToObserve);
-
-      return () => {
-        observer.disconnect();
-      };
-    }
+    observer = useVisibilityObserver(elementToObserve);
   });
 </script>
 
 <section class="conclusion">
-  <div 
-    bind:this={elementToObserve} 
-    class="background-image-3">
-    </div>
-  {#if isVisible}
+  <div bind:this={elementToObserve} class="background-image-3"></div>
+  {#if observer && observer.isVisible}
     <p transition:typewriter>
       Was braucht es, damit Wohnen wieder möglich wird – statt unerschwinglich?
     </p>
   {/if}
 </section>
+
 
 <style>
   .conclusion {

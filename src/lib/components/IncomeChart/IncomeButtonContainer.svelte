@@ -1,7 +1,7 @@
 <script>
-    export let handleIncomeClick;
-    export let incomeLevels = [];
-    export let selectedIndex = -1;
+
+    let { handleIncomeClick, incomeLevels, selectedIndex } = $props();
+    
 </script>
 
 <div class="income-container">

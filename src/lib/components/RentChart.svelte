@@ -2,176 +2,159 @@
   import { onMount } from 'svelte';
   import * as d3 from 'd3';
 
-  export let data;
+  export let data = [];
 
   let chartContainer;
-  let width = 0;
-  let height = 0;
-  let hasMounted = false;
+  let svg;
+  let gx, gyLeft, gyRight;
   let tooltip;
 
-  const margin = { top: 20, right: 50, bottom: 40, left: 50 };
+  let width = 640;
+  let height = 300;
+  const marginTop = 20;
+  const marginRight = 50;
+  const marginBottom = 40;
+  const marginLeft = 50;
 
   onMount(() => {
-    hasMounted = true;
-    width = chartContainer.clientWidth - margin.left - margin.right;
-    height = 300 - margin.top - margin.bottom;
-    drawChart();
-
     const observer = new ResizeObserver(entries => {
       const rect = entries[0].contentRect;
-      width = rect.width - margin.left - margin.right;
-      height = 300 - margin.top - margin.bottom;
-      drawChart();
+      width = rect.width;
     });
 
     observer.observe(chartContainer);
     return () => observer.disconnect();
+
+    tooltip = d3.select("body")
+      .append("div")
+      .attr("class", "tooltip")
+      .style("position", "absolute")
+      .style("visibility", "hidden")
+      .style("background-color", "white")
+      .style("padding", "5px")
+      .style("border", "1px solid #ccc")
+      .style("border-radius", "4px")
+      .style("font-size", "12px");
   });
 
-  function drawChart() {
-    if (!hasMounted || width <= 0 || height <= 0) return;
+  $: innerWidth = width - marginLeft - marginRight;
+  $: innerHeight = height - marginTop - marginBottom;
 
-    const svg = d3.select(chartContainer).select("svg");
-    svg.selectAll("*").remove();
+  $: x = d3.scaleLinear()
+    .domain(d3.extent(data, d => d.Jahr))
+    .range([0, innerWidth]);
 
-    if (!tooltip) {
-      tooltip = d3.select("body")
-        .append("div")
-        .attr("class", "tooltip")
-        .style("position", "absolute")
-        .style("visibility", "hidden")
-        .style("background-color", "white")
-        .style("padding", "5px")
-        .style("border", "1px solid #ccc")
-        .style("border-radius", "4px")
-        .style("font-size", "12px");
-    }
+  $: y1 = d3.scaleLinear()
+    .domain([0, 140])
+    .range([innerHeight, 0]);
 
-    const g = svg
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
-      .append("g")
-      .attr("transform", `translate(${margin.left},${margin.top})`);
+  $: y2 = d3.scaleLinear()
+    .domain([0, 140])
+    .range([innerHeight, 0]);
 
-    const x = d3.scaleLinear()
-      .domain(d3.extent(data, d => d.Jahr))
-      .range([0, width]);
+  $: line1 = d3.line()
+    .x(d => x(d.Jahr))
+    .y(d => y1(d.Mietpreisindex))
+    .curve(d3.curveMonotoneX);
 
-    const y1 = d3.scaleLinear()
-      .domain([0, 140])
-      .range([height, 0]);
+  $: line2 = d3.line()
+    .x(d => x(d.Jahr))
+    .y(d => d.Reallohnindex !== null ? y2(d.Reallohnindex) : NaN)
+    .curve(d3.curveMonotoneX);
 
-    const y2 = d3.scaleLinear()
-      .domain([0, 140])
-      .range([height, 0]);
+  $: if (gx) d3.select(gx).call(d3.axisBottom(x).ticks(Math.ceil(data.length / 4)).tickFormat(d3.format("d")));
+  $: if (gyLeft) d3.select(gyLeft).call(d3.axisLeft(y1).ticks(5));
+  $: if (gyRight) d3.select(gyRight).call(d3.axisRight(y2).ticks(5));
 
-    const line1 = d3.line()
-      .x(d => x(d.Jahr))
-      .y(d => y1(d.Mietpreisindex))
-      .curve(d3.curveMonotoneX);
+  function showTooltip(event, content) {
+    tooltip
+      .html(content)
+      .style("left", event.pageX + 10 + "px")
+      .style("top", event.pageY + 10 + "px")
+      .style("visibility", "visible");
+  }
 
-    const line2 = d3.line()
-      .x(d => x(d.Jahr))
-      .y(d => d.Reallohnindex !== null ? y2(d.Reallohnindex) : NaN)
-      .curve(d3.curveMonotoneX);
-
-    const numberOfTicks = Math.ceil(data.length / 4);
-
-    // X axis
-    g.append("g")
-      .attr("transform", `translate(0,${height})`)
-      .call(d3.axisBottom(x).tickFormat(d3.format("d")).ticks(numberOfTicks))
-      .attr("class", "axis-label");
-
-    // Y1 axis (left)
-    g.append("g")
-      .call(d3.axisLeft(y1).ticks(5))
-      .attr("class", "axis-label");
-
-    // Y2 axis (right)
-    g.append("g")
-      .attr("transform", `translate(${width},0)`)
-      .call(d3.axisRight(y2).ticks(5))
-      .attr("class", "axis-label-reallohn");
-
-    // Red line: Mietpreisindex
-    g.append("path")
-      .datum(data)
-      .attr("class", "line-miet")
-      .attr("fill", "none")
-      .attr("stroke", "red")
-      .attr("stroke-width", 2)
-      .attr("d", line1)
-      .on("mouseover", () => tooltip.style("visibility", "visible"))
-      .on("mousemove", function (event) {
-        const [xPos] = d3.pointer(event);
-        const xValue = x.invert(xPos);
-        const closest = data.reduce((a, b) =>
-          Math.abs(b.Jahr - xValue) < Math.abs(a.Jahr - xValue) ? b : a
-        );
-        tooltip
-          .html(`Jahr: ${closest.Jahr}<br/>Mietpreisindex: ${closest.Mietpreisindex}`)
-          .style("left", event.pageX + 10 + "px")
-          .style("top", event.pageY + 10 + "px");
-      })
-      .on("mouseout", () => tooltip.style("visibility", "hidden"));
-
-    // Blue line: Reallohnindex
-    g.append("path")
-      .datum(data.filter(d => d.Reallohnindex !== null))
-      .attr("class", "line-reallohn")
-      .attr("fill", "none")
-      .attr("stroke", "#2196F3")
-      .attr("stroke-width", 2)
-      .attr("d", line2)
-      .on("mouseover", () => tooltip.style("visibility", "visible"))
-      .on("mousemove", function (event) {
-        const [xPos] = d3.pointer(event);
-        const xValue = x.invert(xPos);
-        const filtered = data.filter(d => d.Reallohnindex !== null);
-        const closest = filtered.reduce((a, b) =>
-          Math.abs(b.Jahr - xValue) < Math.abs(a.Jahr - xValue) ? b : a
-        );
-        tooltip
-          .html(`Jahr: ${closest.Jahr}<br/>Reallohnindex: ${closest.Reallohnindex}`)
-          .style("left", event.pageX + 10 + "px")
-          .style("top", event.pageY + 10 + "px");
-      })
-      .on("mouseout", () => tooltip.style("visibility", "hidden"));
-
-    // Y-axis labels
-    g.append("text")
-      .attr("transform", "rotate(-90)")
-      .attr("x", -height / 2)
-      .attr("y", - 20)
-      .attr("dy", "-1em")
-      .style("text-anchor", "middle")
-      .style("fill", "#ca3f2d")
-      .text("Mietpreisindex");
-
-    g.append("text")
-      .attr("transform", "rotate(-90)")
-      .attr("x", -height / 2)
-      .attr("y", width + margin.right + 12)
-      .attr("dy", "-1em")
-      .style("text-anchor", "middle")
-      .style("fill", "#2db8ca")
-      .text("Reallohnindex (bis 2019)");
+  function hideTooltip() {
+    tooltip?.style("visibility", "hidden");
   }
 </script>
 
 <div class="charts-container" bind:this={chartContainer}>
   <h3 class="sub-titles" id="chart-title">Mieten vs. Löhne</h3>
   <div class="chart-wrapper">
-    <svg class="rent-index-chart"></svg>
+    <svg bind:this={svg} width={width} height={height}>
+      <g transform={`translate(${marginLeft},${marginTop})`}>
+        <!-- Axes -->
+        <g bind:this={gx} transform={`translate(0,${innerHeight})`} />
+        <g bind:this={gyLeft} />
+        <g bind:this={gyRight} transform={`translate(${innerWidth},0)`} />
+
+        <!-- Mietpreisindex line -->
+        <path
+          role="presentation"
+          d={line1(data)}
+          fill="none"
+          stroke="#ca3f2d"
+          stroke-width="3"
+          on:mousemove={(e) => {
+            const [xPos] = d3.pointer(e);
+            const xVal = x.invert(xPos);
+            const closest = data.reduce((a, b) =>
+              Math.abs(b.Jahr - xVal) < Math.abs(a.Jahr - xVal) ? b : a
+            );
+            showTooltip(e, `Jahr: ${closest.Jahr}<br/>Mietpreisindex: ${closest.Mietpreisindex}`);
+          }}
+          on:mouseout={hideTooltip}
+          on:blur={hideTooltip}
+        />
+
+        <!-- Reallohnindex line -->
+        <path
+          role="presentation"
+          d={line2(data.filter(d => d.Reallohnindex !== null))}
+          fill="none"
+          stroke="#2db8ca"
+          stroke-width="3"
+          on:mousemove={(e) => {
+            const [xPos] = d3.pointer(e);
+            const xVal = x.invert(xPos);
+            const filtered = data.filter(d => d.Reallohnindex !== null);
+            const closest = filtered.reduce((a, b) =>
+              Math.abs(b.Jahr - xVal) < Math.abs(a.Jahr - xVal) ? b : a
+            );
+            showTooltip(e, `Jahr: ${closest.Jahr}<br/>Reallohnindex: ${closest.Reallohnindex}`);
+          }}
+          on:mouseout={hideTooltip}
+          on:blur={hideTooltip}
+        />
+
+        <!-- Y-axis labels -->
+        <text
+          transform="rotate(-90)"
+          x={-innerHeight / 2}
+          y={innerWidth + marginRight + 10}
+          dy="-1em"
+          fill="#ca3f2d"
+          text-anchor="middle"
+        >Mietpreisindex</text>
+
+        <text
+          transform="rotate(-90)"
+          x={-innerHeight / 2}
+          y={ -15}
+          dy="-1em"
+          fill="#2db8ca"
+          text-anchor="middle"
+        >Reallohnindex (bis 2019)</text>
+      </g>
+    </svg>
   </div>
 </div>
 
 <style>
   .charts-container {
     width: 70%;
-    max-width: 500px;
+    max-width: 600px;
     margin: 4rem 2rem;
   }
 
@@ -179,40 +162,23 @@
     margin: 1rem auto;
   }
 
-  .chart-wrapper :global(.line) {
-    fill: none;
-    stroke: #ca3f2d;
-    stroke-width: 5;
-  }
-
-  .chart-wrapper :global(.axis-label) {
-    font-size: 12px;
-  }
-
-  .chart-wrapper :global(.line-miet) {
-    fill: none;
-    stroke: #ca3f2d;
-    stroke-width: 4;
-  }
-
-  .chart-wrapper :global(.line-reallohn) {
-    fill: none;
-    stroke: #2db8ca;
-    stroke-width: 4;
-  }
-
-  .rent-index-chart {
-    width: 100%;
-    height: 300px;
-  }
-
   .chart-wrapper {
     width: 100%;
   }
 
-  .charts-container {
-    width: 70%;
-    margin: 0 2rem;
+  svg {
+    width: 100%;
+    height: auto;
+  }
+
+  .tooltip {
+    position: absolute;
+    visibility: hidden;
+    background-color: white;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 12px;
   }
 
   @media (max-width: 768px) {

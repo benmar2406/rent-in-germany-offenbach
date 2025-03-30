@@ -5,7 +5,7 @@
 	
   import Scrolly from "./Scrolly.svelte";
   	
-  let value;
+  let value = $state(0);
 
   const steps = [
 		"<p>Nehmen wir ein Einkommen von 2.000 € netto im Monat. Bei einer Mietbelastung von 30 % bleiben 1.400 € zum Leben. Klingt okay? Davon gehen aber noch Strom, Heizung, Lebensmittel, ÖPNV, Versicherungen und vieles mehr ab. In der Realität wird’s oft knapp – oder es muss an anderen Stellen gespart werden.</p>",
@@ -31,9 +31,6 @@
   
 
 <style>
-	:global(body) {
-		overflow-x: hidden;
-	}
 
   .background-image {
     position: sticky;
