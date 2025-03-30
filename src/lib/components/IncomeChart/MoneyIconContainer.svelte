@@ -22,7 +22,7 @@
     <article class="income-article">
         <p class="rent-percentage-text">Anteil des Einkommens der für die Miete draufgeht:</p>
         <p class="income-percentage" 
-            class:high={percentage > 30}
+            class:high={percentage >= 30}
             >{displayPercentage}%</p>
     </article>
 </div>
