@@ -8,7 +8,7 @@
   let svg;
   let gx, gyLeft, gyRight;
   let tooltip;
-
+  
   let width = 640;
   let height = 300;
   const marginTop = 20;
@@ -69,6 +69,7 @@
   $: if (gyRight) d3.select(gyRight).call(d3.axisRight(y2).ticks(5));
 
   function showTooltip(event, content) {
+
     tooltip
       .html(content)
       .style("left", event.pageX + 10 + "px")
