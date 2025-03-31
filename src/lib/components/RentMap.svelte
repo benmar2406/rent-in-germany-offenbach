@@ -154,7 +154,7 @@
 
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     #map {
       height: 60vh;
     }

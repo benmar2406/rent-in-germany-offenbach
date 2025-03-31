@@ -73,7 +73,7 @@
                 selectedIndex={selectedIncome}
             />
         </div>
-        <div class="separator">
+        <div class="money-icon-container separator">
             <MoneyIconContainer 
                 {coloredIcons} 
                 {displayPercentage} 
@@ -96,28 +96,35 @@
     }
 
     .income-chart-container {
-        display: flex;
         width: 100%;
         max-width: 1200px;
-        margin: 5rem auto;
-        gap: 2rem;
-        justify-content: space-between;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3 Spalten, gleich groß */
+        gap: 0.8rem;
+        margin: 4rem auto;
     }
+
+    .income-chart-container > div {
+        flex-basis: 33%;
+        min-width: 350px; 
+        margin: 0.3rem;
+        padding: 0.5rem;
+    } 
 
     .separator {
         border-right: 1px solid #ccc;
     }
 
-    .income-chart-container > div {
-        flex-basis: 33%;
-        min-width: 390px;
-    } 
-
-    @media (max-width: 768px) {
+    @media (max-width: 1200px) {
         .income-chart-container {
-            flex-direction: column;
-            margin-top: 1rem;
+            grid-template-columns: repeat(2, 1fr); /* 2 Spalten für Mobile */
+            grid-template-rows: auto auto; /* Zwei Reihen */
         }
+
+        .income-chart-container > div {
+            grid-column: 1 / -1; 
+        }
+
 
         .title-einkommen {
             width: 90%;
@@ -126,10 +133,6 @@
         .einkommen {
             width: 95%;
             margin: 0 auto;
-        }
-
-        .income-chart-container > div {
-            min-width: auto;
         }
 
         .separator {
@@ -141,5 +144,6 @@
         }
 
     }
+
 
 </style>        

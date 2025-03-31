@@ -49,7 +49,7 @@
   <ScrollArticle1 />
   <div class="map-article-container-1">
     <RentMap />
-    <div>
+    <div class="article-container-1">
       <article class="intro-article">
         <h2>Stadt oder Land – eine Frage des Preises?</h2>
         <p>Ein Blick auf die Mietpreise zeigt: In urbanen Zentren sind die Kosten pro Quadratmeter oft doppelt so hoch wie in ländlichen Regionen. Während in Großstädten das Wohnen zur finanziellen Belastung wird, bleibt es auf dem Land für viele noch erschwinglich.</p>
@@ -72,12 +72,15 @@
     min-height: 100vh;
   }
 
+  .article-container-1 {
+    margin: 0 auto;
+  }
+
   .intro-article {
     width: 90%;
     max-width: 700px;
     height: fit-content;
-    padding-bottom: 0.3rem;
-  }
+    }
 
   .map-article-container-1 {
     display: grid;
@@ -94,13 +97,17 @@
     overflow-y: auto;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     .map-article-container-1 {
       grid-template-columns: 1fr;
       min-height: auto;
     }
+  }
+
+  @media (max-width: 1200px) {
 
     .intro-article {
+      width: 95%;
       margin: 0.3rem;
       padding: 0.5rem;
     }

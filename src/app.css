@@ -75,7 +75,7 @@ p {
 }
 
 /* Responsive Typography */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   h1 {
     font-size: 1.9rem;
   }
@@ -83,11 +83,9 @@ p {
   h3 {
     font-size: 1.25rem;
   }
+}
 
-  p {
-    font-size: 1.1rem;
-  }
-
+@media screen and (max-width: 1200px) {
   .sub-titles {
     font-size: 1rem;
     padding: 0.3rem;
@@ -95,6 +93,7 @@ p {
     text-align: center;
   }
 }
+
 
 /* Reset and Base Styles */
 * {

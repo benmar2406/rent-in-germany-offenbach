@@ -35,8 +35,9 @@
 
 <style>
     .household-container {
-        padding: 0;
-        margin: 0;
+        padding: 0.1rem;
+        margin: 0.1rem;
+        margin-bottom: 2rem;
         height: fit-content;
         width: 100%;
     }
@@ -45,11 +46,18 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        align-content: start;
         gap: 1rem;
         width: 100%;
         height: fit-content;
-        margin-top: 1rem;
+        margin-top: 1rem auto;
+        margin: auto;
     }
+
+    .person-icons-grid > div {
+            flex-basis: 44%;
+            padding: 0.1rem;
+            }
 
     .icon-container {
         width: 4rem;
@@ -93,23 +101,6 @@
         justify-content: center;
     }
 
-    @media (max-width: 768px) {
-        .household-container {
-            margin: 0;
-            padding: 0.5rem;
-        }
-
-        .person-icons-grid {
-            align-items: start;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin: 0.1rem;
-        }
-
-        .person-icons-grid > div {
-            flex-basis: 30%;
-        }
-
         .icon-container {
             width: 3.3rem;
             height: 3.3rem;
@@ -120,6 +111,14 @@
             align-items: center;
             justify-content: center;
             transition: border-color 0.3s ease;
+        }
+
+        @media screen and (max-width: 1200px) {
+            .person-icons-grid {
+                align-items: start;
+                justify-content: center;
+                flex-wrap: wrap;
+                max-width: 360px;
         }
     }
 
