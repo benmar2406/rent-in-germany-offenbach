@@ -34,7 +34,7 @@
                 <p>{steps[index].year} bekommt man für<br> 11,49 €: {steps[index].availableSqm} qm</p>
             </div>
         </div>
-        <p class="qm-2010">am Beispiel Frankfurt a.M.</p>
+        <p class="qm-2010">Frankfurt a.M.</p>
     </div>
 {/if}
 
@@ -49,8 +49,6 @@
     text-align: center;
     top: 50%;
     left: 50%;
-    width: 600px;
-    height: 600px;
   }
   .sqm-chart-container p {
     font-weight: 700;

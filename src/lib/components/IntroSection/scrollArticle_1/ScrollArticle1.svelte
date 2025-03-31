@@ -141,11 +141,5 @@
     .section-container {
       flex-direction: column-reverse;
     }
-
-    .step {
-      height: 95vh;
-  }
-
-
   }
 </style>
