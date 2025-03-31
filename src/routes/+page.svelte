@@ -3,7 +3,7 @@
   import RentMap from '$lib/components/RentMap.svelte';
   import RentChart from '$lib/components/RentChart.svelte';
   import IncomeChart from '$lib/components/IncomeChart/IncomeChart.svelte';
-  import ScrollArticle1 from '$lib/components/scrollArticle_1/ScrollArticle1.svelte';
+  import ScrollArticle1 from '$lib/components/IntroSection/scrollArticle_1/ScrollArticle1.svelte';
   import ScrollArticle from '$lib/components/scrollArticle_2/ScrollArticle.svelte';
   import Conclusion from '$lib/components/Conclusion.svelte';
 
@@ -41,6 +41,8 @@
     { "Jahr": 2021, "Mietpreisindex": 135.5, "Reallohnindex": null },
     { "Jahr": 2022, "Mietpreisindex": 137.9, "Reallohnindex": null }
   ];
+
+
 </script>
 <ScrollProgress />
 <main>

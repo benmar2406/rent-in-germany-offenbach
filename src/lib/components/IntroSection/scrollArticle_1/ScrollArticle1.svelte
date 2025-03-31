@@ -2,26 +2,55 @@
 	/* By Connor Rothschild https://twitter.com/CL_Rothschild
 	Scrollytelling component from Russell Goldenberg https://twitter.com/codenberg/status/1432774653139984387 */
 	
+  import { onMount } from 'svelte';
   import Scrolly from "./Scrolly.svelte";
+  import RentSqmDevelopment from "./RentSqmDevelopment.svelte";
   	
   let value = $state(0);
+  let hideStep = $state(false);
+  let targetElement;
+  let scrollProgress = $state(0);
 
   const steps = [
 		"<h1 class='main-title'>Wohnen in der Stadt<br><span>Ein Luxus?<span></h1>",
     "<p>Die Mieten in deutschen Städten steigen seit Jahren rasant, und für viele wird es immer schwieriger, sich ein Zuhause in urbanen Ballungszentren zu leisten. Ob München, Berlin oder Hamburg – die durchschnittlichen Quadratmeterpreise für Mietwohnungen haben teils astronomische Höhen erreicht.</p>",
     "<p>In Großstädten ist die Miete oft der größte Kostenfaktor, und gerade für junge Menschen oder Familien mit geringeren Einkommen stellt sich die Frage: Wie viel Geld muss man verdienen, um in einer dieser Städte noch wohnen zu können?</p>",
-  ];
-</script>
+    "",
 
+  ];
+
+    onMount(() => {
+        const handleScroll = () => {
+            const scrollTop = targetElement.scrollTop;
+            const scrollHeight = targetElement.scrollHeight - targetElement.clientHeight;
+            scrollProgress = (scrollTop / scrollHeight) * 100;
+
+        };
+
+        targetElement.addEventListener('scroll', handleScroll);
+        handleScroll();
+
+        return () => {
+            targetElement.removeEventListener('scroll', handleScroll);
+        };
+    });
+
+</script>
 <section class="scroll-section">
-  <div class="background-image-1"></div>
-    <div class="section-container">
+  <div class="background-image-1">
+      <RentSqmDevelopment 
+        stepIndex={value}/>
+    </div>
+  
+    <div bind:this={targetElement} class="section-container">
       <div class="steps-container">
         <Scrolly bind:value>
           {#each steps as text, i}
-            <div class="step" class:active={value === i}>
-              <div class="step-content">{@html text}</div>
-            </div>
+              <div class="step" class:active={value === i}>
+                {#if i < steps.length - 1}
+                  <div class="step-content">{@html text}</div>
+                {/if}
+              </div>
           {/each}
         </Scrolly>
       </div>
@@ -65,7 +94,7 @@
   }
 
   .step {
-    height: 80vh;
+    height: 90vh;
     display: flex;
     place-items: center;
     justify-content: center;
@@ -87,6 +116,7 @@
     margin: auto;
     max-width: 500px;
   }
+
 
   :global(.step-content p) {
     padding: 0.2rem;
