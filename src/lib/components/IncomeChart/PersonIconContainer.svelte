@@ -55,14 +55,14 @@
     }
 
     .person-icons-grid > div {
-            flex-basis: 44%;
-            padding: 0.1rem;
-            }
+        flex-basis: 44%;
+        padding: 0.1rem;
+    }
 
     .icon-container {
-        width: 4rem;
-        height: 4rem;
-        border: 5px solid #000;
+        width: 3.5rem;
+        height: 3.5rem;
+        border: 3px solid #000;
         background-color: transparent;
         border-radius: 50%;
         padding: 0.5rem;
@@ -100,25 +100,14 @@
         align-items: center;
         justify-content: center;
     }
+    
 
-        .icon-container {
-            width: 3.3rem;
-            height: 3.3rem;
-            border: 5px solid #000;
-            padding: 0.2rem;
-            margin: 0.2rem;
-            display: flex;
-            align-items: center;
+    @media screen and (max-width: 1200px) {
+        .person-icons-grid {
+            align-items: start;
             justify-content: center;
-            transition: border-color 0.3s ease;
-        }
-
-        @media screen and (max-width: 1200px) {
-            .person-icons-grid {
-                align-items: start;
-                justify-content: center;
-                flex-wrap: wrap;
-                max-width: 360px;
+            flex-wrap: wrap;
+            max-width: 360px;
         }
     }
 

@@ -1,15 +1,20 @@
 <script>
+    import { onMount } from 'svelte';
+    import { fade, fly } from 'svelte/transition';
+    import { useVisibilityObserver } from '$lib/customHooks/useVisibilityObserver.svelte';
     import PersonIconContainer from './PersonIconContainer.svelte';
     import MoneyIconContainer from './MoneyIconContainer.svelte';
     import IncomeButtonContainer from './IncomeButtonContainer.svelte';
     import IncomeArticle from './IncomeArticle.svelte';
-    import { onMount } from 'svelte';
 
+    let observer = $state();
+    let elementToObserve;
     let percentage = $state(0);
     let displayPercentage = $state("");
     let selectedHousehold = $state(0);
     let selectedIncome = $state(0);
     let displayIncome = $state("");
+
 
     const totalIcons = 100;
     const coloredIcons = $derived(Math.round(totalIcons * (percentage / 100)));
@@ -53,37 +58,47 @@
     }
 
     onMount(() => {
+        observer = useVisibilityObserver(elementToObserve);
         selectedHousehold = 0; 
         selectedIncome = 2; 
         displayIncome = data[householdSizes[selectedHousehold]].incomeLevels[selectedIncome];
-        updatePercentage();
+        updatePercentage();    
     });
+
 </script>
-<section class="einkommen">
+<section class="einkommen" bind:this={elementToObserve}>
     <h2 class="title-einkommen">Wieviel vom Einkommen geht für die Miete drauf?</h2>
     <div class="income-chart-container">
-        <div class="controls-container separator">
-            <PersonIconContainer 
-                {handleIconClick} 
-                selectedIndex={selectedHousehold}
-            />
-            <IncomeButtonContainer 
-                {handleIncomeClick} 
-                incomeLevels={data[householdSizes[selectedHousehold]].incomeLevels}
-                selectedIndex={selectedIncome}
-            />
+        {#if observer && observer.isVisible}
+            <div class="controls-container separator" in:fly={{ y: 200, duration: 2000 }}>
+                <PersonIconContainer 
+                    {handleIconClick} 
+                    selectedIndex={selectedHousehold}
+                />
+            
+                <IncomeButtonContainer 
+                    {handleIncomeClick} 
+                    incomeLevels={data[householdSizes[selectedHousehold]].incomeLevels}
+                    selectedIndex={selectedIncome}
+                />
+            </div>
+        {/if}
+        {#if observer && observer.isVisible}
+            <div class="money-icon-container separator" 
+                in:fly={{ y: 200, duration: 2000, delay: 1000 }}>
+                <MoneyIconContainer 
+                    {coloredIcons} 
+                    {displayPercentage} 
+                    {displayIncome} 
+                    {percentage}
+                />
         </div>
-        <div class="money-icon-container separator">
-            <MoneyIconContainer 
-                {coloredIcons} 
-                {displayPercentage} 
-                {displayIncome} 
-                {percentage}
-            />
-        </div>
-        <div>
-            <IncomeArticle />
-        </div>   
+        {/if}
+        {#if observer && observer.isVisible}
+            <div in:fly={{ y: 200, duration: 2000, delay: 2000 }}>
+                <IncomeArticle />
+            </div>
+        {/if}   
     </div>
 </section>  
 
