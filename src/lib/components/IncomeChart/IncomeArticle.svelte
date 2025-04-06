@@ -15,9 +15,8 @@
 <style>
 
     .income-article {
-        width: 100%;
-        padding: 0;
-        margin: 0;
+        width: 85%;
+        margin: 0 auto;
     }
     
     .legende {
@@ -41,16 +40,11 @@
         margin: 0.5rem 0;
     }
 
-    @media (max-width: 768px) {
-        #remaining-income-title {
-            margin-top: 2rem;
-        }
-
+    @media screen and (min-width: 768px) and (max-width: 1200px) {
         .income-article {
-            width: 95%;
-            margin: 0.3rem;
-            padding: 0.5rem;
+            width: 90%;
         }
-    }
+     
+    } 
     
 </style>

@@ -21,10 +21,10 @@
 
 <style>
     .income-container {
-        padding: 1rem;
         height: fit-content;
         width: 95%;
-        margin: auto;
+        padding: 0.1rem;
+        margin: 0.1rem;
     }
     
     .income-buttons-container {
@@ -55,7 +55,7 @@
         background-color: #fff5f5;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 1200px) {
         .income-button {
             padding: 0.6rem 0.8rem;
             margin: 0 auto;
@@ -63,15 +63,8 @@
         }
 
         .income-container {
-            margin: 0;
             border-left: solid 1px grey;
         }
-
-        .income-container {
-            padding: 0.5rem;
-            height: fit-content;
-            margin: auto;
-    }
 
     }
 

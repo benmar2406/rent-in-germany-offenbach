@@ -1,15 +1,22 @@
 <script>
+    import { onMount } from 'svelte';
+    import { fade, fly } from 'svelte/transition';
+    import { useVisibilityObserver } from '$lib/customHooks/useVisibilityObserver.svelte';
+    import { base } from '$app/paths';
     import PersonIconContainer from './PersonIconContainer.svelte';
     import MoneyIconContainer from './MoneyIconContainer.svelte';
     import IncomeButtonContainer from './IncomeButtonContainer.svelte';
     import IncomeArticle from './IncomeArticle.svelte';
-    import { onMount } from 'svelte';
+    import PersonIconContainerSnippet from './PersonIconContainerSnippet.svelte';
 
+    let observer = $state();
+    let elementToObserve;
     let percentage = $state(0);
     let displayPercentage = $state("");
     let selectedHousehold = $state(0);
     let selectedIncome = $state(0);
     let displayIncome = $state("");
+
 
     const totalIcons = 100;
     const coloredIcons = $derived(Math.round(totalIcons * (percentage / 100)));
@@ -35,6 +42,14 @@
 
     const householdSizes = ["onePerson", "twoPersons", "threePersons", "fourPersons"];
 
+    const onePerson = `${base}/images/income-chart/one.png`;
+    const twoPersons = `${base}/images/income-chart/two.png`;
+    const threePersons = `${base}/images/income-chart/three.png`;
+    const fourPersons = `${base}/images/income-chart/four.png`;
+
+    const iconsArray = [[onePerson, "Eine Person"], [twoPersons, "Zwei Personen"], [threePersons, "Drei Personen"], [fourPersons, "ab 4 Personen"]];
+
+
     const handleIconClick = (index) => {
         selectedHousehold = index;
         updatePercentage();
@@ -53,37 +68,50 @@
     }
 
     onMount(() => {
+        observer = useVisibilityObserver(elementToObserve);
         selectedHousehold = 0; 
         selectedIncome = 2; 
         displayIncome = data[householdSizes[selectedHousehold]].incomeLevels[selectedIncome];
-        updatePercentage();
+        updatePercentage();    
     });
+
 </script>
-<section class="einkommen">
+
+<section class="einkommen" bind:this={elementToObserve}>
+
+
     <h2 class="title-einkommen">Wieviel vom Einkommen geht für die Miete drauf?</h2>
     <div class="income-chart-container">
-        <div class="controls-container separator">
-            <PersonIconContainer 
-                {handleIconClick} 
-                selectedIndex={selectedHousehold}
-            />
-            <IncomeButtonContainer 
-                {handleIncomeClick} 
-                incomeLevels={data[householdSizes[selectedHousehold]].incomeLevels}
-                selectedIndex={selectedIncome}
-            />
+        {#if observer && observer.isVisible}
+            <div class="controls-container separator" in:fly={{ y: 200, duration: 2000 }}>
+                <PersonIconContainer
+                    {householdSizes} 
+                    {iconsArray} 
+                    {handleIconClick} 
+                    selectedIndex={selectedHousehold}/>
+                <IncomeButtonContainer 
+                    {handleIncomeClick} 
+                    incomeLevels={data[householdSizes[selectedHousehold]].incomeLevels}
+                    selectedIndex={selectedIncome}
+                />
+            </div>
+        {/if}
+        {#if observer && observer.isVisible}
+            <div class="money-icon-container separator" 
+                in:fly={{ y: 200, duration: 2000, delay: 1000 }}>
+                <MoneyIconContainer 
+                    {coloredIcons} 
+                    {displayPercentage} 
+                    {displayIncome} 
+                    {percentage}
+                />
         </div>
-        <div class="separator">
-            <MoneyIconContainer 
-                {coloredIcons} 
-                {displayPercentage} 
-                {displayIncome} 
-                {percentage}
-            />
-        </div>
-        <div>
-            <IncomeArticle />
-        </div>   
+        {/if}
+        {#if observer && observer.isVisible}
+            <div in:fly={{ y: 200, duration: 2000, delay: 2000 }}>
+                <IncomeArticle />
+            </div>
+        {/if}   
     </div>
 </section>  
 
@@ -96,28 +124,35 @@
     }
 
     .income-chart-container {
-        display: flex;
         width: 100%;
         max-width: 1200px;
-        margin: 5rem auto;
-        gap: 2rem;
-        justify-content: space-between;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3 Spalten, gleich groß */
+        gap: 0.8rem;
+        margin: 4rem auto;
     }
+
+    .income-chart-container > div {
+        flex-basis: 33%;
+        min-width: 350px; 
+        margin: 0.3rem;
+        padding: 0.5rem;
+    } 
 
     .separator {
         border-right: 1px solid #ccc;
     }
 
-    .income-chart-container > div {
-        flex-basis: 33%;
-        min-width: 390px;
-    } 
-
-    @media (max-width: 768px) {
+    @media (max-width: 1200px) {
         .income-chart-container {
-            flex-direction: column;
-            margin-top: 1rem;
+            grid-template-columns: repeat(2, 1fr); /* 2 Spalten für Mobile */
+            grid-template-rows: auto auto; /* Zwei Reihen */
         }
+
+        .income-chart-container > div {
+            grid-column: 1 / -1; 
+        }
+
 
         .title-einkommen {
             width: 90%;
@@ -126,10 +161,6 @@
         .einkommen {
             width: 95%;
             margin: 0 auto;
-        }
-
-        .income-chart-container > div {
-            min-width: auto;
         }
 
         .separator {
@@ -141,5 +172,6 @@
         }
 
     }
+
 
 </style>        

@@ -4,7 +4,7 @@
   import { useVisibilityObserver } from '$lib/customHooks/useVisibilityObserver.svelte.js';
 
   let elementToObserve;
-  let observer; // This will hold our reactive hook
+  let observer; 
 
   onMount(() => {
     observer = useVisibilityObserver(elementToObserve);

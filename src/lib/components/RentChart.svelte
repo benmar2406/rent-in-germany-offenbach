@@ -3,6 +3,7 @@
   import * as d3 from 'd3';
 
   export let data = [];
+  export let elementToObserve;
 
   let chartContainer;
   let svg;
@@ -157,8 +158,9 @@
 <style>
   .charts-container {
     width: 70%;
-    max-width: 600px;
-    margin: 4rem 2rem;
+    max-width: 500px;
+    min-width: 300px;
+    margin: 1.8rem;
   }
 
   .charts-container h3 {
@@ -174,20 +176,13 @@
     height: auto;
   }
 
-  .tooltip {
-    position: absolute;
-    visibility: hidden;
-    background-color: white;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 12px;
-  }
 
   @media (max-width: 768px) {
     .charts-container {
-      width: 95%;
-      margin: 0 auto;
+      width: 90%;
+      min-width: auto;
+      margin: auto;
+      padding: 0.2rem
     }
   }
 </style>

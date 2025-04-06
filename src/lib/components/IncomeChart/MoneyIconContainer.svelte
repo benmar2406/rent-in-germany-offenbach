@@ -40,8 +40,8 @@
     }
 
     .icon-wrapper {
-        width: 2rem;
-        height: 2rem;
+        width: 1.8rem;
+        height: 1.8rem;
     }
 
     .income-article {
@@ -62,7 +62,7 @@
         margin: 1.5rem auto;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 1200px) {
         .money-icon-grid {
             grid-template-columns: repeat(auto-fill, minmax(30px, 1fr));
             width: 90%;
