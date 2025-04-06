@@ -38,5 +38,6 @@
     background-color: #ca3f2d; 
     transition: width 0.1s ease-out;
   }
+
   
 </style>

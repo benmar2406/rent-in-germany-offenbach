@@ -7,7 +7,6 @@
     import MoneyIconContainer from './MoneyIconContainer.svelte';
     import IncomeButtonContainer from './IncomeButtonContainer.svelte';
     import IncomeArticle from './IncomeArticle.svelte';
-    import PersonIconContainerSnippet from './PersonIconContainerSnippet.svelte';
 
     let observer = $state();
     let elementToObserve;
