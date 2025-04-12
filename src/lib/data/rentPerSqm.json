@@ -1,0 +1,20 @@
+
+[
+  { "city": "München", "rentSqm": 23.70 },
+  { "city": "Berlin", "rentSqm": 19.11 },
+  { "city": "Hamburg", "rentSqm": 17.16 },
+  { "city": "Frankfurt", "rentSqm": 19.58 },
+  { "city": "Köln", "rentSqm": 15.34 },
+  { "city": "Stuttgart", "rentSqm": 19.96 },
+  { "city": "Düsseldorf", "rentSqm": 15.17 },
+  { "city": "Leipzig", "rentSqm": 10.71 },
+  { "city": "Dresden", "rentSqm": 10.18 },
+  { "city": "Nürnberg", "rentSqm": 13.76 },
+  { "city": "Hannover", "rentSqm": 11.69 },
+  { "city": "Bremen", "rentSqm": 11.80 },
+  { "city": "Dortmund", "rentSqm": 9.94 },
+  { "city": "Essen", "rentSqm": 9.68 }
+]
+
+
+

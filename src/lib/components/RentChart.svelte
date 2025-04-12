@@ -3,7 +3,6 @@
   import * as d3 from 'd3';
 
   export let data = [];
-  export let elementToObserve;
 
   let chartContainer;
   let svg;
@@ -175,7 +174,6 @@
     width: 100%;
     height: auto;
   }
-
 
   @media (max-width: 768px) {
     .charts-container {

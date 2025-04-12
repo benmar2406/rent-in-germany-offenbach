@@ -5,6 +5,7 @@
   import ScrollProgress from '$lib/components/ScrollProgress.svelte';
   import RentMap from '$lib/components/RentMap.svelte';
   import RentChart from '$lib/components/RentChart.svelte';
+  import CityRentIncomeContainer from '$lib/components/cityRentIncomeCharts/CityRentIncomeContainer.svelte';
   import IncomeChart from '$lib/components/IncomeChart/IncomeChart.svelte';
   import ScrollArticle1 from '$lib/components/IntroSection/scrollArticle_1/ScrollArticle1.svelte';
   import ScrollArticle from '$lib/components/scrollArticle_2/ScrollArticle.svelte';
@@ -58,6 +59,7 @@
 <ScrollProgress />
 <main>
   <ScrollArticle1 />
+  <CityRentIncomeContainer/>
   <div class="map-article-container-1">
     <RentMap />
     <div class="article-container-1" >
@@ -98,6 +100,7 @@
     width: 90%;
     max-width: 700px;
     height: fit-content;
+    padding-bottom: 1rem;
     }
 
   .map-article-container-1 {
