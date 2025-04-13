@@ -65,6 +65,24 @@ p {
   padding-bottom: 1rem;
 }
 
+button {
+  background-color: transparent;
+  border: 2px solid #ca3f2d;
+  color: black;
+  font-family: 'Poppins', sans-serif;
+  text-decoration: none;
+  padding: 0.3rem;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 0.2rem;
+}
+
+button:hover, button.selected {
+  background-color: #fff5f4;
+  padding: 0.4rem;
+}
+
 .sub-titles {
   font-size: 1.2rem;
   margin-bottom: 1.8rem;

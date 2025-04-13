@@ -9,6 +9,7 @@
     .chart-container{
         width: 80vw;
         margin: 10vh auto;
+        max-width: 1400px;
     }
 </style>
 
