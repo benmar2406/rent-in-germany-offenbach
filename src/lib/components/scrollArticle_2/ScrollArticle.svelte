@@ -32,6 +32,10 @@
 
 <style>
 
+  .scroll-section {
+    z-index: 100;
+  }
+
   .background-image {
     position: sticky;
     top: 0;

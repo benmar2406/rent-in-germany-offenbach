@@ -1,39 +1,29 @@
 <script>
   import { onMount } from 'svelte';
   import { scaleLinear } from 'd3-scale';
-  import { fade, fly } from 'svelte/transition';
+  import { fade } from 'svelte/transition';
   import { useVisibilityObserver } from '$lib/customHooks/useVisibilityObserver.svelte';
 
   let observer = $state();
   let elementToObserve;
-  let selectedIndex = $state();
-  let animationKey = $state(0);
-  let selectedButton = $state(false);
-  let mobile = $state(false);
+  let { data, sortAlphabetically, sortDescending, sortAscending, triggerAnimation, buttons, mobile, selectedIndex, animationKey } = $props()
+
 
   onMount(() => {
-        observer = useVisibilityObserver(elementToObserve);
-        mobile = window.innerWidth < 1120; 
-    });
+    observer = useVisibilityObserver(elementToObserve);
 
-  // 1. Basic Setup: Get the data
-  // Some random birthrate data
-  let data = $state([
-  { "name": "München", "rentSqm": 23.70 },
-  { "name": "Berlin", "rentSqm": 19.11 },
-  { "name": "Hamburg", "rentSqm": 17.16 },
-  { "name": "Frankfurt", "rentSqm": 19.58 },
-  { "name": "Köln", "rentSqm": 15.34 },
-  { "name": "Stuttgart", "rentSqm": 19.96 },
-  { "name": "Düsseldorf", "rentSqm": 15.17 },
-  { "name": "Leipzig", "rentSqm": 10.71 },
-  { "name": "Dresden", "rentSqm": 10.18 },
-  { "name": "Nürnberg", "rentSqm": 13.76 },
-  { "name": "Hannover", "rentSqm": 11.69 },
-  { "name": "Bremen", "rentSqm": 11.80 },
-  { "name": "Dortmund", "rentSqm": 9.94 },
-  { "name": "Essen", "rentSqm": 9.68 }
-]);
+    const updateMobile = () => {
+      mobile = window.innerWidth < 1120;
+    };
+
+    updateMobile(); 
+
+    window.addEventListener('resize', updateMobile);
+
+    return () => {
+      window.removeEventListener('resize', updateMobile);
+    };
+  });
 
   // 2. Dimensions, Margins & Scales
 
@@ -57,35 +47,7 @@
   let innerWidth = $derived(width - (padding.left + padding.right));
   let barWidth = $derived(innerWidth / (data.length / 0.9));
 
-  const sortAlphabetically = (index) => {
-  data = [...data].sort((a, b) => a.name.localeCompare(b.name, 'de'));
-  selectedIndex = index;
-  console.log("selectedIndex " + selectedIndex)
-
-};
-
-const sortDescending = (index) => {
-  data = [...data].sort((a, b) => b.rentSqm - a.rentSqm);
-};
-
-const sortAscending = (index) => {
-  data = [...data].sort((a, b) => a.rentSqm - b.rentSqm);
-
-};
-
-  const triggerAnimation = (sortFn, index) => {
-    if (index !== selectedIndex) {
-      sortFn();   
-      selectedIndex = index;       
-      animationKey += 1;  // trigger re-render with new key
-    }
-  }
-
-  const buttons = [
-    {text: "⬇", function: (i) => triggerAnimation(sortDescending, i)},
-    {text: "⬆", function: (i) => triggerAnimation(sortAscending, i)},
-    {text: "A-Z", function: (i) => triggerAnimation(sortAlphabetically, i)},
-  ]
+ 
 
 </script>
 

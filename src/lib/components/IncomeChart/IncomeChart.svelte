@@ -116,6 +116,10 @@
 
 <style>
 
+    .einkommen {
+        z-index: 1;
+    }
+
     .title-einkommen {
         margin: 3rem auto;
         width: 100%;
@@ -126,7 +130,7 @@
         width: 100%;
         max-width: 1200px;
         display: grid;
-        grid-template-columns: repeat(3, 1fr); /* 3 Spalten, gleich groß */
+        grid-template-columns: repeat(3, 1fr); 
         gap: 0.8rem;
         margin: 4rem auto;
     }
