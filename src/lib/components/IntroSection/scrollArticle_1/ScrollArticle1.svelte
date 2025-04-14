@@ -60,7 +60,10 @@
 
 <style>
 
-  
+  section {
+    margin-top: 0;
+  }
+
   :global(.main-title) {
     text-align: center;
     margin: 2rem auto;
@@ -85,7 +88,6 @@
     z-index: -1; 
   }
 	
-
   .section-container {
     margin-top: 1em;
     text-align: center;
@@ -136,7 +138,6 @@
     z-index: 10;
   }
 	
-/* Comment out the following line to always make it 'text-on-top' */
   @media screen and (max-width: 768px) {
     .section-container {
       flex-direction: column-reverse;

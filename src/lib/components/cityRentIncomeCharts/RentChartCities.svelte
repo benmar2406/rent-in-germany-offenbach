@@ -47,7 +47,6 @@
   let innerWidth = $derived(width - (padding.left + padding.right));
   let barWidth = $derived(innerWidth / (data.length / 0.9));
 
- 
 
 </script>
 

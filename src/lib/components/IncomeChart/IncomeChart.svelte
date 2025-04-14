@@ -16,7 +16,6 @@
     let selectedIncome = $state(0);
     let displayIncome = $state("");
 
-
     const totalIcons = 100;
     const coloredIcons = $derived(Math.round(totalIcons * (percentage / 100)));
     
@@ -77,8 +76,6 @@
 </script>
 
 <section class="einkommen" bind:this={elementToObserve}>
-
-
     <h2 class="title-einkommen">Wieviel vom Einkommen geht für die Miete drauf?</h2>
     <div class="income-chart-container">
         {#if observer && observer.isVisible}

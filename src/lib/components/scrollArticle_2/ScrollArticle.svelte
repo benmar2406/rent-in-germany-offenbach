@@ -34,6 +34,7 @@
 
   .scroll-section {
     z-index: 100;
+    margin: 0 auto;
   }
 
   .background-image {

@@ -26,6 +26,8 @@
     position: relative;
     width: 100%;
     text-align: center;
+    margin: 0 auto;
+
   }
 
   .conclusion p {
