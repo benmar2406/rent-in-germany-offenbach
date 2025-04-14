@@ -7,7 +7,7 @@
 </script>
 
 <div class="social-housing-container">
-    <h3 class="number-social-housing">Obdachlosigkeit: {homelessPeople.toLocaleString('de-DE')} Menschen betroffen</h3>
+    <h3 class="number-social-housing">Obdachlosigkeit:<br>{homelessPeople.toLocaleString('de-DE')} Menschen betroffen</h3>
     <div class="house-icon-grid">
         {#each peopleIconsArray as person}
             <div class="icon-wrapper" transition:fade={{ duration: 1000 }}>  

@@ -59,12 +59,11 @@
     }
 
     .button-container {
-        margin: auto;
+        margin: 2rem auto;
         height: 2rem;
         display: flex;
         justify-content: center;
         align-items: center;
-        margin: 2rem;
         width: 100%;
   }
 

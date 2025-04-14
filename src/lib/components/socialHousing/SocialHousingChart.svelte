@@ -7,7 +7,7 @@
 </script>
 
 <div class="social-housing-container">
-    <h3 class="number-social-housing">Anzahl Sozialwohnungen: {socialHouses.toLocaleString('de-DE')} Mio.</h3>
+    <h3 class="number-social-housing">Anzahl Sozialwohnungen:<br>{socialHouses.toLocaleString('de-DE')} Mio.</h3>
     <div class="house-icon-grid">
         {#each houseIcons as house}
             <div class="icon-wrapper" transition:fade={{ duration: 1000 }}>  
