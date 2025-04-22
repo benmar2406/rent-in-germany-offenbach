@@ -184,6 +184,16 @@
   .x-ticks {
     color: white;
   }
+
 }
+
+@media screen and (max-width: 1120px) {
+
+  .tick text {
+    fill: white;
+  }
+}
+
+
 
 </style>

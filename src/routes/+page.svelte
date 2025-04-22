@@ -13,7 +13,7 @@
 <main>
   <ScrollArticle1 />
   <IncomeChart />
-  <SocialHousing />
+  <!--- <SocialHousing /> --->
   <MapSection />
   <CityRentIncomeContainer/>
   <ScrollArticle />
