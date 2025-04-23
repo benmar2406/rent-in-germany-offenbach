@@ -6,23 +6,11 @@
 
   let observer = $state();
   let elementToObserve;
-  let { data, sortAlphabetically, sortDescending, sortAscending, triggerAnimation, buttons, mobile, selectedIndex, animationKey } = $props()
+  let { data, sortAlphabetically, sortDescending, sortAscending, triggerAnimation, buttons, smallScreen, selectedIndex, animationKey } = $props()
 
 
   onMount(() => {
     observer = useVisibilityObserver(elementToObserve);
-
-    const updateMobile = () => {
-      mobile = window.innerWidth < 1120;
-    };
-
-    updateMobile(); 
-
-    window.addEventListener('resize', updateMobile);
-
-    return () => {
-      window.removeEventListener('resize', updateMobile);
-    };
   });
 
   // 2. Dimensions, Margins & Scales
@@ -77,9 +65,9 @@
             <text
               transition:fade|global={{ delay: 300 * i, duration: 500 }}
               class="chart-description"
-              x={mobile ? xScale(i) - barWidth : xScale(i) + barWidth / 2}
-              y={yScale(mobile ? city.rentSqm - 0.5 : city.rentSqm + 0.5)}
-              transform={mobile ? `rotate(90 ${xScale(i) + 6} ${yScale(city.rentSqm) + barWidth * 0.45})` : ""}
+              x={smallScreen.current ? xScale(i) - barWidth : xScale(i) + barWidth / 2}
+              y={yScale(smallScreen.current ? city.rentSqm - 0.5 : city.rentSqm + 0.5)}
+              transform={smallScreen.current ? `rotate(90 ${xScale(i) + 6} ${yScale(city.rentSqm) + barWidth * 0.45})` : ""}
             >
             {city.rentSqm.toString().replace(".", ",")} €  
             </text>
@@ -105,10 +93,10 @@
         <g class="tick" transform="translate({xScale(i)}, {height})">
           <text 
             class="x-ticks"
-            x={mobile ? "-60" : barWidth / 2} 
-            y={mobile ? "+10" : "-4"}
-            transform={mobile ? `rotate(90 ${barWidth / 2} 7)` : ""}
-            text-anchor={mobile ? "start" : "middle"}
+            x={smallScreen.current ? "-60" : barWidth / 2} 
+            y={smallScreen.current ? "+10" : "-4"}
+            transform={smallScreen.current ? `rotate(90 ${barWidth / 2} 7)` : ""}
+            text-anchor={smallScreen.current ? "start" : "middle"}
             >
             {city.name}</text>
         </g>
@@ -184,7 +172,6 @@
   .x-ticks {
     color: white;
   }
-
 }
 
 @media screen and (max-width: 1120px) {

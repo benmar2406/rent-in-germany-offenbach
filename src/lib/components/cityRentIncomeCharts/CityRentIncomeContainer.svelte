@@ -1,6 +1,8 @@
 <script>
     import RentChartCities from "./RentChartCities.svelte";
 
+    import { MediaQuery } from 'svelte/reactivity';
+
     let data = $state([
         { "name": "München", "rentSqm": 23.70 },
         { "name": "Berlin", "rentSqm": 19.11 },
@@ -21,7 +23,8 @@
     let selectedIndex = $state();
     let animationKey = $state(0);
     let selectedButton = $state(false);
-    let mobile = $state(false);
+    const smallScreen = new MediaQuery('max-width: 1120px');
+
 
     const sortAlphabetically = (index) => {
         data = [...data].sort((a, b) => a.name.localeCompare(b.name, 'de'));
@@ -59,7 +62,7 @@
         {triggerAnimation} 
         {buttons} 
         {selectedIndex}
-        {mobile}
+        {smallScreen}
         {animationKey}/>
 </div>
 
