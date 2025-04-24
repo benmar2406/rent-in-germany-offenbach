@@ -60,8 +60,9 @@
 
 <style>
 
-  section {
+  .scroll-section {
     margin-top: 0;
+    margin-bottom: 0;
   }
 
   :global(.main-title) {

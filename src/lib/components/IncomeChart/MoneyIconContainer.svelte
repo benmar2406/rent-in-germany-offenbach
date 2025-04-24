@@ -11,7 +11,7 @@
 </script>
 
 <div class="chart-article-container-2">
-    <h3 id="income-title" class="sub-titles">Anteil der Miete am Haushaltseinkommen:</h3>
+    <p id="income-title" class="sub-titles">Anteil der Miete am Haushaltseinkommen:</p>
     <div class="money-icon-grid">
         {#each moneyIcons as { isColored }}
             <div class="icon-wrapper">  
@@ -32,20 +32,17 @@
     .money-icon-grid {
         display: grid;
         grid-template-columns: repeat(10, 1fr);
-        gap: 0.2rem;
-        align-content:flex-start;
+        gap: 0.7rem;
         width: fit-content;
+        align-content:flex-start;
         padding: 0.8rem;
         border: 1px solid #ca3f2d;
+        margin: auto;
     }
 
     .icon-wrapper {
         width: 1.8rem;
         height: 1.8rem;
-    }
-
-    .income-article {
-        margin-top: 0.5rem;
     }
 
     .income-percentage {
@@ -60,6 +57,15 @@
 
     .rent-percentage-text {
         margin: 1.5rem auto;
+    }
+
+    .income-article {
+        margin: auto;
+        text-align: center;
+    }
+
+    #income-title {
+        text-align: center;
     }
 
     @media (max-width: 1200px) {

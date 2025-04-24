@@ -25,7 +25,7 @@
     }
 
     circle {
-        fill: #cccccc;
+        fill: white;
         stroke: none;
         transition: fill 0.3s ease;
     }
@@ -35,7 +35,7 @@
     }
 
     .symbol {
-        fill: white;
+        fill: #333333;
         font-size: 14px;
         font-weight: bold;
         font-family: Arial, sans-serif;

@@ -79,13 +79,10 @@ button {
   margin: 0.2rem;
 }
 
-button:hover, button.selected {
-  background-color: #fff5f4;
-  padding: 0.4rem;
-}
 
 section {
   margin: 5rem auto;
+  padding: 2rem auto;
 }
 
 .sub-titles {

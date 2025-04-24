@@ -93,7 +93,7 @@
             </div>
         {/if}
         {#if observer && observer.isVisible}
-            <div class="money-icon-container separator" 
+            <div class="money-icon-container" 
                 in:fly={{ y: 200, duration: 2000, delay: 1000 }}>
                 <MoneyIconContainer 
                     {coloredIcons} 
@@ -102,25 +102,30 @@
                     {percentage}
                 />
         </div>
-        {/if}
-        {#if observer && observer.isVisible}
+        {/if} 
+    </div>
+    {#if observer && observer.isVisible}
             <div in:fly={{ y: 200, duration: 2000, delay: 2000 }}>
                 <IncomeArticle />
             </div>
-        {/if}   
-    </div>
+        {/if}  
 </section>  
 
 <style>
 
     .einkommen {
         z-index: 1;
+        background-color: #333333;
+        margin: 0 auto;
+        color: white;
+        padding-bottom: 0.5rem;
     }
 
     .title-einkommen {
-        margin: 3rem auto;
         width: 100%;
         text-align: center;
+        padding: 2rem;
+        margin-top: 0;
     }
 
     .income-chart-container {
@@ -141,6 +146,15 @@
 
     .separator {
         border-right: 1px solid #ccc;
+    }
+
+    .controls-container {
+        padding: auto 2rem;
+    }
+
+    .money-icon-container {
+        grid-column-start: 2;
+        grid-column-end:   4;
     }
 
     @media (max-width: 1200px) {

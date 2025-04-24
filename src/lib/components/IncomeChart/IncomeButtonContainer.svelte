@@ -33,18 +33,19 @@
         gap: 0.5rem;
         width: 100%;
         margin-top: 1rem;
+        margin: auto;
     }
 
     .income-button {
         padding: 0.8rem 1.2rem;
-        border: 2px solid #000;
+        color: white;
+        border: 2px solid white;
         border-radius: 8px;
-        background: white;
         font-family: 'Poppins', sans-serif;
         font-size: 0.9rem;
         font-weight: 600;
         transition: all 0.3s ease;
-        width: 100%;
+        width: 90%;
         text-align: left;
     }
 
@@ -52,7 +53,6 @@
         border-color: #ca3f2d;
         cursor: pointer;
         transform: translateX(5px);
-        background-color: #fff5f5;
     }
 
     @media (max-width: 1200px) {

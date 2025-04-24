@@ -35,8 +35,8 @@
 
 <style>
     .household-container {
-        padding: 0.1rem;
-        margin: 0.1rem;
+        padding: 0 0.1rem;
+        margin: 0 0.1rem;
         margin-bottom: 2rem;
         height: fit-content;
         width: 100%;
@@ -45,9 +45,8 @@
     .person-icons-grid {
         display: flex;
         justify-content: center;
-        align-items: center;
-        align-content: start;
-        gap: 1rem;
+        align-items: start;
+        gap: 0.2rem;
         width: 100%;
         height: fit-content;
         margin-top: 1rem auto;
@@ -55,17 +54,17 @@
     }
 
     .person-icons-grid > div {
-        flex-basis: 44%;
+        flex-basis: 33%;
         padding: 0.1rem;
     }
 
     .icon-container {
         width: 3.5rem;
         height: 3.5rem;
-        border: 3px solid #000;
+        border: 3px solid white;
         background-color: transparent;
         border-radius: 50%;
-        padding: 0.5rem;
+        padding: 0.4rem;
         margin: 0.5rem;
         display: flex;
         align-items: center;
