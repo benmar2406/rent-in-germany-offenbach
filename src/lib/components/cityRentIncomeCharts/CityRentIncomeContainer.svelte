@@ -68,9 +68,9 @@
 
 <style>
     .chart-container{
-        width: 80vw;
-        margin: 10vh auto;
-        max-width: 1400px;
+        padding: 5rem;
+        background-color: #333333;
+        color: white;
     }
 </style>
 

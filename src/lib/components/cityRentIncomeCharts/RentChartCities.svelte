@@ -40,8 +40,8 @@
 
 <div class="chart" bind:clientWidth={width}>
   <h3 id="cities-chart-title" class="sub-titles">Miete pro Quadratmeter in ausgewählten Städten</h3>
+  
   <div class="button-container">
-    
     {#each buttons as button, index}
     <button 
       onclick={() => button.function(index)}
@@ -50,6 +50,7 @@
     </button>
     {/each}
   </div>
+
   <svg {width} {height}>
     <!-- 4. Design the bars -->
     <g class="bars" bind:this={elementToObserve}>
@@ -106,6 +107,14 @@
 </div>
 
 <style>
+
+  .chart {
+    color: white;
+    fill: white;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
   .x-axis .tick text {
     text-anchor: middle;
     color: black;
@@ -120,13 +129,10 @@
     font-family: Poppins, sans-serif;
     font-size: 0.725em;
     font-weight: 200;
-    color: black;
   }
 
   .tick text {
-    fill: black;
     text-anchor: start;
-    color: black;
   }
 
   .tick line {
@@ -142,7 +148,6 @@
 
   .chart-description {
     text-anchor: middle;
-    fill: black;
     font-weight: 700;
     font-size: 0.8rem;
   }
@@ -163,21 +168,14 @@
     margin: 2rem;
   }
 
+  button {
+    color: white;
+  }
+
   @media screen and (max-width: 1200px) {
         
   .chart-description {
     font-size: 0.5rem;
-  }
-
-  .x-ticks {
-    color: white;
-  }
-}
-
-@media screen and (max-width: 1120px) {
-
-  .tick text {
-    fill: white;
   }
 }
 

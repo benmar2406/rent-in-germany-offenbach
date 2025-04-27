@@ -56,7 +56,7 @@
         <p>Ein Blick auf die Mietpreise zeigt: In urbanen Zentren sind die Kosten pro Quadratmeter oft doppelt so hoch wie in ländlichen Regionen. Während in Großstädten das Wohnen zur finanziellen Belastung wird, bleibt es auf dem Land für viele noch erschwinglich.</p>
         <p>Gleichzeitig wächst die Schere zwischen Löhnen und Mieten: In vielen Städten steigen die Mietpreise deutlich schneller als die Einkommen.</p>
       </article>
-      <div style:height="400px" bind:this={elementToObserve}>
+      <div bind:this={elementToObserve}>
         {#if observer && observer.isVisible}  
         <div 
             in:fade={{ duration: 700 }}>
@@ -68,30 +68,26 @@
   </section>
 
 
-  <style>
-    .article-container-1 {
-      margin-left: 2rem;
-    }
+<style>
 
-    .intro-article {
-      width: 90%;
-      max-width: 700px;
-      height: fit-content;
-      padding-bottom: 1rem;
-    }
+  .map-article-container-1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin: 0;
+    min-height: 100vh;
+  }
 
-    .intro-article h2 {
-      text-align: left;
-    }
+  .intro-article {
+    width: 90%;
+    max-width: 700px;
+    height: fit-content;
+    padding-bottom: 0;
+  }
 
-    .map-article-container-1 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-      margin: 0;
-      margin-bottom: 5rem;
-      min-height: 100vh;
-    }
+  .intro-article h2 {
+    text-align: left;
+  }
 
   article {
     height: 100%;
@@ -99,17 +95,14 @@
   }
 
   @media (max-width: 900px) {
+
     .map-article-container-1 {
       grid-template-columns: 1fr;
       min-height: auto;
-    }
-
-    .article-container-1 {
-      margin: auto;
     }
 
     .intro-article {
       margin: 0;
     }
   } 
-  </style>
+</style>
