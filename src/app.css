@@ -85,6 +85,10 @@ section {
   padding: 2rem auto;
 }
 
+article {
+  padding: 2rem;
+}
+
 .sub-titles {
   font-size: 1.2rem;
   margin-bottom: 1.8rem;

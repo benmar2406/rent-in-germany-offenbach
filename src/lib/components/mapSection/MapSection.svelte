@@ -48,7 +48,7 @@
   });
 </script>
 
-<div class="map-article-container-1">
+<section class="map-article-container-1">
     <RentMap />
     <div class="article-container-1" >
       <article class="intro-article">
@@ -65,32 +65,35 @@
         {/if}
     </div>     
     </div>
-  </div>
+  </section>
 
 
   <style>
     .article-container-1 {
-    margin: 0 auto;
-  }
-
-  .intro-article {
-    width: 90%;
-    max-width: 700px;
-    height: fit-content;
-    padding-bottom: 1rem;
+      margin-left: 2rem;
     }
 
-  .map-article-container-1 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    margin: 0;
-    margin-bottom: 5rem;
-    min-height: 100vh;
-  }
+    .intro-article {
+      width: 90%;
+      max-width: 700px;
+      height: fit-content;
+      padding-bottom: 1rem;
+    }
+
+    .intro-article h2 {
+      text-align: left;
+    }
+
+    .map-article-container-1 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      margin: 0;
+      margin-bottom: 5rem;
+      min-height: 100vh;
+    }
 
   article {
-    padding: 2rem;
     height: 100%;
     overflow-y: auto;
   }
@@ -99,6 +102,14 @@
     .map-article-container-1 {
       grid-template-columns: 1fr;
       min-height: auto;
+    }
+
+    .article-container-1 {
+      margin: auto;
+    }
+
+    .intro-article {
+      margin: 0;
     }
   } 
   </style>

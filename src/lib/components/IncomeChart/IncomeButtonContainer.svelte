@@ -45,7 +45,7 @@
         font-size: 0.9rem;
         font-weight: 600;
         transition: all 0.3s ease;
-        width: 90%;
+        width: 100%;
         text-align: left;
     }
 
@@ -59,7 +59,7 @@
         .income-button {
             padding: 0.6rem 0.8rem;
             margin: 0 auto;
-            width: 90%;
+            width: 80%;
         }
 
         .income-container {

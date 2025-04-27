@@ -125,7 +125,8 @@
         width: 100%;
         text-align: center;
         padding: 2rem;
-        margin-top: 0;
+        margin: auto;
+        padding-top: 2rem;
     }
 
     .income-chart-container {
@@ -173,7 +174,6 @@
         }
 
         .einkommen {
-            width: 95%;
             margin: 0 auto;
         }
 

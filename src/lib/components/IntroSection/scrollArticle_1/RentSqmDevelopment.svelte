@@ -58,13 +58,13 @@
   }
 
   .qm-2010 {
-    color: black;
+    color: #333333;
     text-shadow: white 0.2em 0.3em 0.4em;
     padding-bottom: 0.3rem;
   }
   
   .sqm-2018 {
-    border: solid 1px black;
+    border: solid 1px #333333;
     border-radius: 5%;
     text-align: center;
     width: 300px;
@@ -83,7 +83,7 @@
     border-radius: 5%;
     transition: all 1.2s ease;
     box-shadow: 10px -7px 20px rgba(0, 0, 0, 0.2);
-    background: rgba(1, 1, 1, 0.6);
+    background: rgba(51, 51, 51, 0.9);
   }
 
     .sqm-chart p { 

@@ -91,6 +91,8 @@
         font-size: 0.7rem;
         font-weight: 700;
         line-height: 0.8rem;
+        width: 3rem;
+        margin: auto;
     }
 
     .icon-container-wrapper {

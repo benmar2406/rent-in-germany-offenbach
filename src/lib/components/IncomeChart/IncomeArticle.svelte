@@ -27,7 +27,12 @@
         .income-article {
             width: 90%;
         }
-     
-    } 
+    }
+
+    @media screen and (max-width: 800px) {
+        .income-article {
+            display: block;
+        } 
+    }
     
 </style>
