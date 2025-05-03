@@ -103,6 +103,6 @@
 
     .intro-article {
       margin: 0;
-    }
+    } 
   } 
 </style>
