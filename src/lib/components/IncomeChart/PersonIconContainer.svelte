@@ -9,7 +9,6 @@
 
     const iconsArray = [[onePerson, "Eine Person"], [twoPersons, "Zwei Personen"], [threePersons, "Drei Personen"], [fourPersons, "ab 4 Personen"]];
 
-   
     let { handleIconClick, selectedIndex } = $props();
     
 </script>
