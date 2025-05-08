@@ -168,11 +168,6 @@
             grid-column: 1 / -1; 
         }
 
-
-        .title-einkommen {
-            width: 90%;
-        }
-
         .einkommen {
             margin: 0 auto;
         }
