@@ -160,6 +160,7 @@
     max-width: 500px;
     min-width: 300px;
     margin: 1.8rem;
+    margin-bottom: 0;
   }
 
   .charts-container h3 {

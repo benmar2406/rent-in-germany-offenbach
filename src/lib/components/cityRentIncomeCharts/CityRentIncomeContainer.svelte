@@ -4,6 +4,7 @@
     import { MediaQuery } from 'svelte/reactivity';
 
     let data = $state([
+        { "name": "Offenbach", "rentSqm": 15.04 },
         { "name": "München", "rentSqm": 23.70 },
         { "name": "Berlin", "rentSqm": 19.11 },
         { "name": "Hamburg", "rentSqm": 17.16 },

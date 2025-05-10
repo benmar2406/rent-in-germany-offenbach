@@ -70,7 +70,7 @@
               y={yScale(smallScreen.current ? city.rentSqm - 0.5 : city.rentSqm + 0.5)}
               transform={smallScreen.current ? `rotate(90 ${xScale(i) + 6} ${yScale(city.rentSqm) + barWidth * 0.45})` : ""}
             >
-            {city.rentSqm.toString().replace(".", ",")} €  
+            {city.rentSqm.toFixed(2).toString().replace(".", ",")} €  
             </text>
           {/if}
         {/key}

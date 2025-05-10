@@ -11,13 +11,13 @@
 
   onMount(() => {
 
-    // Initialize Mapbox
+    // Initialize Mapbox   Location HESSE    Latitude  50.65205150    Longitude  9.16243760  
     mapboxgl.accessToken = 'pk.eyJ1IjoiYmVubWFyYmUiLCJhIjoiY204ZGdqbmk2MjIxcjJrczd5cjhnOWc5ZiJ9.aNWSLi175awDsnHX7mZIlQ';
     map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/benmarbe/cm8bs3mv900gf01s96g49btrq',
-      center: [10.0, 51.3],
-      zoom: 5,
+      center: [9.16243760, 50.65205150],
+      zoom: 7 ,
       projection: 'mercator',
       maxZoom: 12,
       minZoom: 5.4

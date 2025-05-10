@@ -1,18 +1,22 @@
 <script>
     import { fade } from 'svelte/transition';
 
-    let { stepIndex = 0 } = $props();
+    let { stepIndex = 0, city } = $props();
     let index = $state(0);
     let showChart = $state(false);
     let divSize = $state(100);
     let animationFinished = $state(false)
 
   // availableSqm is calculated from the sqm price to how much sqm you would get in 2018 or today for the same price of 11.40 €
+
+  
   const steps = [
-        { year: 2010, pricePerSqm: 11.49, availableSqm: 1 },
-        { year: 2018, pricePerSqm: 16.78, availableSqm: +(11.49 / 16.78).toFixed(2) },
-        { year: 2025, pricePerSqm: 19.58, availableSqm: +(11.49 / 19.58).toFixed(2) }
+        { year: 2010, pricePerSqm: city.price2010, availableSqm: 1 },
+        { year: 2018, pricePerSqm: city.price2018, availableSqm: +(city.price2010 / city.price2018).toFixed(2) },
+        { year: 2025, pricePerSqm: city.price2025, availableSqm: +(city.price2010 / city.price2025).toFixed(2) }
     ];
+
+    console.log(city.price2010)
 
     $effect(() => {
         if (stepIndex > 0) {
@@ -25,30 +29,28 @@
 
 {#if showChart}
     <div class="sqm-chart-container" in:fade>
-        <p class="qm-2010"> Quadratmeterpreis 2010: {steps[0].pricePerSqm} €</p>
+        <p class="qm-2010"> Quadratmeterpreis 2010: {steps[0].pricePerSqm.toString().replace(".", ",")} €</p>
         <div class="sqm-2018">
             <div 
                 class="sqm-chart"
                 style:width={`${divSize}%`}
                 style:height={`${divSize}%`}>
-                <p>{steps[index].year} bekommt man für<br> 11,49 €: {steps[index].availableSqm} qm</p>
+                <p>{steps[index].year} bekommt man für<br>{city.price2010.toString().replace(".", ",")} €: {steps[index].availableSqm.toString().replace(".", ",")} qm</p>
             </div>
         </div>
-        <p class="qm-2010">Frankfurt a.M.</p>
+        <p class="qm-2010">{city.name}</p>
     </div>
 {/if}
 
 <style>
   .sqm-chart-container {
-    position: absolute;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transform: translate(-50%, -50%);
     text-align: center;
-    top: 50%;
-    left: 50%;
+    margin: 1.1rem;
+
   }
   .sqm-chart-container p {
     font-weight: 700;
