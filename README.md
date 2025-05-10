@@ -9,7 +9,7 @@ Interactive visualizations and maps depicting topics around rent prices and inco
 
 ## Prerequisites
 * Node.js and npm installed
-* Mapbox API Key
+* Mapbox API Key, [get here](https://www.mapbox.com/)
 * Mapbox Style
 * Adjusted tooltips fitting your data's properties in Mapbox
 
