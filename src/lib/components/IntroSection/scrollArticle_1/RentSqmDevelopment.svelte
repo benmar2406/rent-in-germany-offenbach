@@ -1,14 +1,13 @@
 <script>
     import { fade } from 'svelte/transition';
 
-    let { stepIndex = 0, city } = $props();
+    let { stepIndex = 0, city, innerWidth } = $props();
     let index = $state(0);
     let showChart = $state(false);
     let divSize = $state(100);
     let animationFinished = $state(false)
 
   // availableSqm is calculated from the sqm price to how much sqm you would get in 2018 or today for the same price of 11.40 €
-
   
   const steps = [
         { year: 2010, pricePerSqm: city.price2010, availableSqm: 1 },
@@ -16,14 +15,13 @@
         { year: 2025, pricePerSqm: city.price2025, availableSqm: +(city.price2010 / city.price2025).toFixed(2) }
     ];
 
-    console.log(city.price2010)
-
     $effect(() => {
         if (stepIndex > 0) {
             index = stepIndex - 1;
             showChart = true;
             divSize = 100 * Math.sqrt(steps[index].availableSqm);}  
     });
+
 
 </script>
 
@@ -50,8 +48,8 @@
     align-items: center;
     text-align: center;
     margin: 1.1rem;
-
   }
+
   .sqm-chart-container p {
     font-weight: 700;
     font-family: 'Poppins', sans-serif;
@@ -74,7 +72,7 @@
     display: flex;
     align-items: end;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
+  }
 
   .sqm-chart {
     color: white;
@@ -88,7 +86,8 @@
     background: rgba(51, 51, 51, 0.9);
   }
 
-    .sqm-chart p { 
-        padding: 2rem;
-    }   
+  .sqm-chart p { 
+    padding: 2rem;
+  }  
+  
 </style>

@@ -5,7 +5,7 @@
         <!-- House shape filled -->
         <polygon 
             points="32,12 8,32 14,32 14,52 26,52 26,38 38,38 38,52 50,52 50,32 56,32"
-            fill="#000" 
+            fill="#ffff" 
             stroke-linejoin="round" 
             stroke-linecap="round" />
         <!-- Door -->

@@ -9,7 +9,7 @@
   let gx, gyLeft, gyRight;
   let tooltip;
   
-  let width = 640;
+  let width = 0;
   let height = 300;
   const marginTop = 20;
   const marginRight = 50;
@@ -156,11 +156,11 @@
 
 <style>
   .charts-container {
-    width: 70%;
+    width: 80%;
     max-width: 500px;
     min-width: 300px;
     margin: 1.8rem;
-    margin-bottom: 0;
+    margin-bottom: 0; 
   }
 
   .charts-container h3 {
@@ -179,7 +179,7 @@
     .charts-container {
       width: 90%;
       min-width: auto;
-      margin: auto;
+      margin: 0 auto;
       padding: 0.2rem
     }
   }

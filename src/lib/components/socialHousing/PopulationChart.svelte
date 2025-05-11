@@ -32,6 +32,7 @@
         display: grid;
         grid-template-columns: repeat(15, 1fr);
         gap: 0.2rem;
+        row-gap: 0.5rem;
         align-content:flex-start;
         width: fit-content;
         padding: 0.8rem;
@@ -61,7 +62,7 @@
         }
 
         .house-icon-grid {
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns: repeat(10, 1fr);
         }
     }
 </style>

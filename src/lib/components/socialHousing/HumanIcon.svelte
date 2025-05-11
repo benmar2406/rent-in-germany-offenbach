@@ -1,7 +1,7 @@
 <script>
     import { base } from '$app/paths';
-    const human = `${base}/images/person.png`;
-</script>
+    import human from '../../icons/person.png';
+</script>   
 
 <div>
 <img 

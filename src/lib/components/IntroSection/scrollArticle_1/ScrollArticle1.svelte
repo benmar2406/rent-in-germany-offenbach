@@ -5,6 +5,8 @@
   import { onMount } from 'svelte';
   import Scrolly from "./Scrolly.svelte";
   import RentSqmDevelopment from "./RentSqmDevelopment.svelte";
+	import { scaleQuantile } from 'd3';
+  import { innerWidth } from 'svelte/reactivity/window';
   	
   let value = $state(0);
   let hideStep = $state(false);
@@ -16,42 +18,43 @@
     { name: "Frankfurt", price2010: 11.49, price2018: 16.78, price2025: 19.75 }
 ]
 
+console.log(citiesRent[0])
 
   const steps = [
 		"<h1 class='main-title'>Wohnen in der Stadt<br><span>Ein Luxus?<span></h1>",
     "<p>Die Mieten in deutschen Städten steigen seit Jahren rasant, und für viele wird es immer schwieriger, sich ein Zuhause in urbanen Ballungszentren zu leisten. Auch im Rhein-Maingebiet – die durchschnittlichen Quadratmeterpreise für Mietwohnungen haben teils astronomische Höhen erreicht.</p>",
     "<p>In Großstädten wie Frankfurt oder Offenbach ist die Miete oft der größte Kostenfaktor, und gerade für junge Menschen oder Familien mit geringeren Einkommen stellt sich die Frage: Wie viel Geld muss man verdienen, um in einer dieser Städte noch wohnen zu können?</p>",
-    "",
-
+    ""
   ];
 
-    onMount(() => {
-        const handleScroll = () => {
-            const scrollTop = targetElement.scrollTop;
-            const scrollHeight = targetElement.scrollHeight - targetElement.clientHeight;
-            scrollProgress = (scrollTop / scrollHeight) * 100;
+  onMount(() => {
+    const handleScroll = () => {
+      const scrollTop = targetElement.scrollTop;
+      const scrollHeight = targetElement.scrollHeight - targetElement.clientHeight;
+      scrollProgress = (scrollTop / scrollHeight) * 100;
 
-        };
+    };
 
-        targetElement.addEventListener('scroll', handleScroll);
-        handleScroll();
+    targetElement.addEventListener('scroll', handleScroll);
+    handleScroll();
 
-        return () => {
-            targetElement.removeEventListener('scroll', handleScroll);
-        };
-    });
+    return () => {
+        targetElement.removeEventListener('scroll', handleScroll);
+    };
+  });
 
 </script>
 <section class="scroll-section">
     <div class="background-image-1">
       <div class="sqm-container">
-        {#each citiesRent as city}
-          <RentSqmDevelopment 
-            stepIndex={value}
-            {city}
-            />
-        {/each}
-    </div>
+          {#each citiesRent as city, index}
+            <RentSqmDevelopment 
+              stepIndex={value}
+              {city}
+              {innerWidth}
+              />
+          {/each}
+      </div>
     </div>
   
     <div bind:this={targetElement} class="section-container">
@@ -163,5 +166,9 @@
     .section-container {
       flex-direction: column-reverse;
     }
+
+    .sqm-container {
+      flex-direction: column;
+  }
   }
 </style>

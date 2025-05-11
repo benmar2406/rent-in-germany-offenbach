@@ -20,7 +20,7 @@ const config = {
 			strict: true
 		}),
 		paths: {
-			base: dev ? '' : '/mieten'
+			base: dev ? '' : '/mieten-of'
 		}
 	},
 	preprocess: vitePreprocess()
