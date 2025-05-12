@@ -48,7 +48,7 @@
         const regio3 = feature.properties.regio3 || 'Keine Daten verfügbar.';
         const regio2 = feature.properties.regio2 || 'Keine Daten verfügbar.';
         const retrievedPrice = feature.properties.price_per_sqm;
-        const priceSqm = retrievedPrice ? retrievedPrice.toFixed(2) : '';
+        const priceSqm = retrievedPrice ? retrievedPrice.toFixed(2).replace('.', ',') : '';
         popup.setLngLat(event.lngLat)
           .setHTML(`
             <div id="pd">

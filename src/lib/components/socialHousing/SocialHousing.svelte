@@ -1,12 +1,16 @@
 <script>
     import SocialHousingChart from "./SocialHousingChart.svelte";
     import PopulationChart from "./PopulationChart.svelte";
+    import SocialHousingArticle from "./SocialHousingArticle.svelte";
 
-    let socialHouses = $state(2500000);
-    let homelessPeople = $state( 330000);
+    let homelessPeople = $state(330000);
     let selectedIndex = $state(0);
+    let selectedCityIndex = $state(0)
+    let selectedCity = $state('Offenbach');
+    let factor = $state(50);
 
-    let totalIcons = $derived(socialHouses / 10000) // 2.5 million social houses / appartments
+    let socialHouses = $state(5348); 
+    let totalIcons = $derived(socialHouses / factor) // 2.5 million social houses / appartments
     let houseIcons = $derived(Array.from({ length: totalIcons }, (_, index) => ({
         index
     })));
@@ -16,16 +20,36 @@
         index
     })));
 
+    let cityButtons = ["Offenbach", "Deutschland"]
+    let yearsButtons = [2000, 2024]
+    let factors = [50, 10000]
 
-    let buttons = [
-        { year: 2002, numberSocialAppartments: 2500000, homelessPopulation: 330000 },
-        { year: 2023, numberSocialAppartments: 1100000, homelessPopulation: 531600 },
-    ]
+    let cities = {
+        Offenbach:
+            [
+                { year: 2000, apartments: 5348, homelessPopulation: 330000 },
+                { year: 2024, apartments: 3328, homelessPopulation: 531600 }
+            ],
+        Deutschland:
+            [
+                { year: 2000, apartments: 2500000, homelessPopulation: 330000 },
+                { year: 2024, apartments: 1100000, homelessPopulation: 531600 }
+            ],
+    }
 
-    const handleButtonClick = (index) => {
+    $inspect(socialHouses)
+
+    const handleYearClick = (index) => {
         selectedIndex = index;
-        socialHouses = buttons[index].numberSocialAppartments;
-        homelessPeople = buttons[index].homelessPopulation;
+        socialHouses = cities[selectedCity][index].apartments;
+        homelessPeople = cities[selectedCity][index].homelessPopulation;
+    }
+
+    const handleCityClick = (index) => {
+        selectedCityIndex = index;
+        selectedCity = cityButtons[index];
+        factor = factors[index]
+        handleYearClick(selectedIndex)
     }
 
 </script>
@@ -34,18 +58,28 @@
 <section class="social-housing-section">
     <h2>Sozialer Wohnungsbau im Rückgang</h2>
     <div class="button-container">
-        {#each buttons as button, index}
+        {#each cityButtons as button, index}
         <button 
-          onclick={() => handleButtonClick(index)}
+          onclick={() => handleCityClick(index)}
+          class:selected={index === selectedCityIndex}
+          >{button}
+        </button>
+        {/each}
+    </div>
+    <div class="button-container">    
+        {#each yearsButtons as button, index}
+        <button 
+          onclick={() => handleYearClick(index)}
           class:selected={index === selectedIndex}
-          >{button.year}
+          >{button}
         </button>
         {/each}
     </div>
     <div class="grid-layout">
-        <SocialHousingChart {houseIcons} {socialHouses}/>
+        <SocialHousingChart {houseIcons} {socialHouses} {factor}/>
         <PopulationChart {homelessPeople} {peopleIconsArray} />
     </div>
+    <SocialHousingArticle/>
 </section>
 
 <style>
@@ -53,7 +87,7 @@
         background-color: #333333;
         margin:  auto;
         padding-top: 2rem;
-        padding-bottom: 2rem;
+        padding-bottom: 4rem;
         color: white;
     }
 
@@ -68,6 +102,8 @@
         width: 85%;
         margin: auto;
         gap: 0.8rem;
+        min-height: 400px;
+
     }
 
     .button-container {
@@ -78,7 +114,7 @@
         justify-content: center;
         align-items: center;
         width: 100%;
-  }
+    }
 
   .button-container button {
     color: white;
@@ -94,7 +130,7 @@
     .grid-layout {
         grid-template-columns: 1fr;
         grid-template-rows: auto;
-        width: 100%
+        width: 100%;
     }
   }
 

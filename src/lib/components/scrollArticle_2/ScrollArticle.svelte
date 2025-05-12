@@ -8,7 +8,7 @@
   let value = $state(0);
 
   const steps = [
-		"<p>Nehmen wir ein Einkommen von 2.000 € netto im Monat. Bei einer Mietbelastung von 30 % bleiben 1.400 € zum Leben. Klingt okay? Davon gehen aber noch Strom, Heizung, Lebensmittel, ÖPNV, Versicherungen und vieles mehr ab. In der Realität wird’s oft knapp – oder es muss an anderen Stellen gespart werden.</p>",
+		"<p>Alteingesessene Mieter, Ältere, Menschen mit Migrationshintergrund, Alleinerziehenden und Familien mit mehreren Kindern werden so aus der Stadt gedrängt.</p>",
     "<p>Manche weichen ins Umland aus – dort sind die Mieten (noch) günstiger. Aber das hat seinen Preis: längere Pendelzeiten, höhere Mobilitätskosten, weniger Infrastruktur. Und wenn alle das machen, steigen auch dort die Preise. Ein Kreislauf beginnt.</p>",
     "<p>Mehr sozialer Wohnungsbau, Mietpreisbremsen, Förderung für Neubauprojekte – viele Maßnahmen werden diskutiert. Doch Entspannung ist bisher nicht in Sicht. Was bleibt, ist die Frage:</p>",
   ];

@@ -12,10 +12,10 @@
 <ScrollProgress />
 <main>
   <ScrollArticle1 />
-  <IncomeChart />
-  <SocialHousing />
   <MapSection />
   <CityRentIncomeContainer/>
+  <IncomeChart />
+  <SocialHousing />
   <ScrollArticle />
   <Conclusion />
 </main>

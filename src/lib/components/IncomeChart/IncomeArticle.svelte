@@ -1,10 +1,10 @@
 <article class="income-article">
     <div>
-        <p>Im Jahr 2022 gaben Haushalte in Deutschland durchschnittlich <strong>27,8 % ihres Nettoeinkommens</strong> für die Bruttokaltmiete aus. Wer <strong>nach 2019</strong> eine Wohnung neu angemietet hat, musste mit <strong>29,5 %</strong> deutlich mehr einplanen – in Großstädten lag die Quote sogar bei <strong>30,8 %</strong>.</p>
+        <p>Im Jahr 2022 gaben Haushalte in Deutschland durchschnittlich <strong>27,8 % ihres Nettoeinkommens</strong> für die Bruttokaltmiete aus. Wer <strong>nach 2019</strong> eine Wohnung neu angemietet hat, musste mit <strong>29,5 %</strong> deutlich mehr einplanen – in Großstädten lag die Quote sogar bei <strong>30,8 %</strong>.</p><p>In Offenbach sind es 63% der Haushalte die mehr als 30% ihres Einkommens für die Miete aufwenden.</p>
     </div> 
     <div>   
         <p>Besonders stark betroffen sind Haushalte mit geringem Einkommen: Sie wenden oft <strong>über 40 %</strong> ihres Budgets allein für die Miete auf. Insgesamt traf das im Jahr 2022 auf rund <strong>3,1 Millionen Haushalte</strong> zu – darunter <strong>1,5 Millionen</strong>, bei denen die Mietkosten sogar die Hälfte des Einkommens überschritten.</p>
-    </div>
+    </div>                
     
     <div class="explanation">
         <p><strong>Bruttokaltmiete</strong>: Die Miete inklusive kalter Nebenkosten wie Müllabfuhr, Hausmeister oder Allgemeinstrom – jedoch ohne Heiz- und Wasserkosten.</p>

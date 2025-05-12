@@ -17,14 +17,11 @@
     { name: "Offenbach", price2010: 7.56, price2018: 11.68, price2025: 15.04 },
     { name: "Frankfurt", price2010: 11.49, price2018: 16.78, price2025: 19.75 }
 ]
-
-console.log(citiesRent[0])
-
   const steps = [
 		"<h1 class='main-title'>Wohnen in der Stadt<br><span>Ein Luxus?<span></h1>",
     "<p>Die Mieten in deutschen Städten steigen seit Jahren rasant, und für viele wird es immer schwieriger, sich ein Zuhause in urbanen Ballungszentren zu leisten. Auch im Rhein-Maingebiet – die durchschnittlichen Quadratmeterpreise für Mietwohnungen haben teils astronomische Höhen erreicht.</p>",
     "<p>In Großstädten wie Frankfurt oder Offenbach ist die Miete oft der größte Kostenfaktor, und gerade für junge Menschen oder Familien mit geringeren Einkommen stellt sich die Frage: Wie viel Geld muss man verdienen, um in einer dieser Städte noch wohnen zu können?</p>",
-    ""
+    "<p>Für Offenbach bedeuten die Nähe zu Frankfurt und der allgemeine Zuzug in die Region zu einer hohen Nachfrage bei gleichzeitig begrenztem Wohnungsangebot.</p>"
   ];
 
   onMount(() => {
