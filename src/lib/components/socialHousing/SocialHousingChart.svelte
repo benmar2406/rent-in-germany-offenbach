@@ -2,13 +2,24 @@
     import HouseIcon from "./HouseIcon.svelte";
     import { fade } from 'svelte/transition';
 
-    let { houseIcons, socialHouses, factorHouses, factor } = $props();
+    let { 
+        houseIcons, 
+        socialHouses, 
+        factorHouses, 
+        factor, 
+        minHeightHousesGrid 
+    } = $props();
+
+    $inspect(minHeightHousesGrid)
 
 </script>
 
 <div class="social-housing-container">
     <h3 class="number-social-housing">Anzahl Sozialwohnungen:<br>{socialHouses.toLocaleString('de-DE')}</h3>
-    <div class="house-icon-grid">
+    <div 
+        class="house-icon-grid"
+        style:min-height={minHeightHousesGrid}px
+        >
         {#each houseIcons as house}
             <div class="icon-wrapper" transition:fade={{ duration: 1000 }}>  
                 <HouseIcon />

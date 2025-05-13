@@ -8,6 +8,8 @@
     let selectedCityIndex = $state(0)
     let selectedCity = $state('Offenbach');
     let factor = $state(50);
+    let minHeightHousesGrid = $state(281);
+    let minHeightHumansGrid = $state(170);
 
     let socialHouses = $state(5348); 
     let totalIcons = $derived(socialHouses / factor) // 2.5 million social houses / appartments
@@ -37,7 +39,15 @@
             ],
     }
 
-    $inspect(socialHouses)
+    $effect(() => {
+        if (selectedCity === "Offenbach") {
+            minHeightHousesGrid = 281;
+            minHeightHumansGrid = 170;
+        } else {
+            minHeightHousesGrid = 570;
+            minHeightHumansGrid = 170;
+        }
+    })
 
     const handleYearClick = (index) => {
         selectedIndex = index;
@@ -48,8 +58,8 @@
     const handleCityClick = (index) => {
         selectedCityIndex = index;
         selectedCity = cityButtons[index];
-        factor = factors[index]
-        handleYearClick(selectedIndex)
+        factor = factors[index];
+        handleYearClick(selectedIndex);
     }
 
 </script>
@@ -76,10 +86,19 @@
         {/each}
     </div>
     <div class="grid-layout">
-        <SocialHousingChart {houseIcons} {socialHouses} {factor}/>
-        <PopulationChart {homelessPeople} {peopleIconsArray} />
+        <SocialHousingChart 
+            {houseIcons} 
+            {socialHouses} 
+            {factor}
+            {minHeightHousesGrid}
+        />
+        <PopulationChart 
+            {homelessPeople} 
+            {peopleIconsArray} 
+            {minHeightHumansGrid}
+        />
     </div>
-    <SocialHousingArticle/>
+    <SocialHousingArticle />
 </section>
 
 <style>

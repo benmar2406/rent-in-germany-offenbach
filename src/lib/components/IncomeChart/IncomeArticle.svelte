@@ -13,8 +13,8 @@
 </article>
 
 <style>
-
     .income-article {
+        
         width: 100%;
         max-width: 1200px;
         display: grid;

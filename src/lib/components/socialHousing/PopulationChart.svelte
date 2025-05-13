@@ -2,13 +2,13 @@
     import HumanIcon from './HumanIcon.svelte';
     import { fade } from 'svelte/transition';
 
-    let { homelessPeople, peopleIconsArray } = $props();
+    let { homelessPeople, peopleIconsArray, minHeightHumansGrid } = $props();
 
 </script>
 
 <div class="social-housing-container">
     <h3 class="number-social-housing">Obdachlosigkeit:<br>{homelessPeople.toLocaleString('de-DE')} Menschen betroffen</h3>
-    <div class="house-icon-grid">
+    <div class="house-icon-grid" style:min-height={minHeightHumansGrid}px>
         {#each peopleIconsArray as person}
             <div class="icon-wrapper" transition:fade={{ duration: 1000 }}>  
                 <HumanIcon />
