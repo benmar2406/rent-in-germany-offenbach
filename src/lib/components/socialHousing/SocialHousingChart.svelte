@@ -6,8 +6,7 @@
         houseIcons, 
         socialHouses, 
         factorHouses, 
-        factor, 
-        minHeightHousesGrid 
+        minHeightHousesGrid
     } = $props();
 
     $inspect(minHeightHousesGrid)
@@ -30,7 +29,7 @@
         <div class="icon-wrapper">  
             <HouseIcon style="display:inline"/>
         </div>
-        <span>= {factor} Sozialwohnungen</span>
+        <span>= {factorHouses.toLocaleString("de-DE")} Sozialwohnungen</span>
     </legend>
 </div>
 

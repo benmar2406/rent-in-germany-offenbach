@@ -3,16 +3,15 @@
     import PopulationChart from "./PopulationChart.svelte";
     import SocialHousingArticle from "./SocialHousingArticle.svelte";
 
-    let homelessPeople = $state(330000);
+    let homelessPeople = $state();
     let selectedIndex = $state(0);
     let selectedCityIndex = $state(0)
     let selectedCity = $state('Offenbach');
-    let factor = $state(50);
+    let factorHouses = $state(50);
     let minHeightHousesGrid = $state(281);
     let minHeightHumansGrid = $state(170);
-
     let socialHouses = $state(5348); 
-    let totalIcons = $derived(socialHouses / factor) // 2.5 million social houses / appartments
+    let totalIcons = $derived(socialHouses / factorHouses) // 2.5 million social houses / appartments
     let houseIcons = $derived(Array.from({ length: totalIcons }, (_, index) => ({
         index
     })));
@@ -29,8 +28,8 @@
     let cities = {
         Offenbach:
             [
-                { year: 2000, apartments: 5348, homelessPopulation: 330000 },
-                { year: 2024, apartments: 3328, homelessPopulation: 531600 }
+                { year: 2000, apartments: 5348, homelessPopulation: 0 },
+                { year: 2024, apartments: 3328, homelessPopulation: 0 }
             ],
         Deutschland:
             [
@@ -42,7 +41,7 @@
     $effect(() => {
         if (selectedCity === "Offenbach") {
             minHeightHousesGrid = 281;
-            minHeightHumansGrid = 170;
+            minHeightHumansGrid = 0;
         } else {
             minHeightHousesGrid = 570;
             minHeightHumansGrid = 170;
@@ -58,7 +57,7 @@
     const handleCityClick = (index) => {
         selectedCityIndex = index;
         selectedCity = cityButtons[index];
-        factor = factors[index];
+        factorHouses = factors[index];
         handleYearClick(selectedIndex);
     }
 
@@ -89,13 +88,15 @@
         <SocialHousingChart 
             {houseIcons} 
             {socialHouses} 
-            {factor}
+            {factorHouses}
             {minHeightHousesGrid}
         />
         <PopulationChart 
             {homelessPeople} 
             {peopleIconsArray} 
             {minHeightHumansGrid}
+            {selectedCity}
+            
         />
     </div>
     <SocialHousingArticle />
@@ -121,8 +122,8 @@
         width: 85%;
         margin: auto;
         gap: 0.8rem;
+        max-width: 1200px;
         min-height: 400px;
-
     }
 
     .button-container {

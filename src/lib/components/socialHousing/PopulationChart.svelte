@@ -2,25 +2,53 @@
     import HumanIcon from './HumanIcon.svelte';
     import { fade } from 'svelte/transition';
 
-    let { homelessPeople, peopleIconsArray, minHeightHumansGrid } = $props();
+    let { 
+        homelessPeople, 
+        peopleIconsArray, 
+        minHeightHumansGrid, 
+        selectedCity,
+        } 
+    = $props();
+
+    $inspect(peopleIconsArray)
+        
+    let noDataAvailable = $state(true)
+
 
 </script>
 
 <div class="social-housing-container">
-    <h3 class="number-social-housing">Obdachlosigkeit:<br>{homelessPeople.toLocaleString('de-DE')} Menschen betroffen</h3>
+    <h3 class="number-social-housing">Obdachlosigkeit:<br>
+        {selectedCity === "Offenbach" ? "Keine Zahlen vorhanden" : `${homelessPeople.toLocaleString('de-DE')} Menschen betroffen`}</h3>
     <div class="house-icon-grid" style:min-height={minHeightHumansGrid}px>
         {#each peopleIconsArray as person}
-            <div class="icon-wrapper" transition:fade={{ duration: 1000 }}>  
-                <HumanIcon />
+            <div 
+                class="icon-wrapper" 
+                transition:fade={{ duration: 1000 }}
+                >  
+                <HumanIcon 
+            />
             </div>
         {/each}
     </div>
+    {#if selectedCity === "Offenbach"} 
+            <span
+                class="no-data-text"
+                transition:fade={{ duration: 500 }}
+                >
+                Für Offenbach liegen für den Zeitraum keine Zahlen vor.
+            </span>
+    {/if}
 </div>
 
 
 <style>   
     .social-housing-container {
         margin: 0.2rem auto;  
+    }
+
+    .no-data-text {
+        white-space: nowrap;
     }
 
     .number-social-housing {
