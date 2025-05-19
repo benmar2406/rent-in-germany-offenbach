@@ -19,7 +19,7 @@
         class="house-icon-grid"
         style:min-height={minHeightHousesGrid}px
         role="group" 
-        aria-label="Representation of homeless people"
+        aria-label="Visualisierung der Anzahl an Sozialwohnungen"
     >
         {#each houseIcons as house}
             <div 

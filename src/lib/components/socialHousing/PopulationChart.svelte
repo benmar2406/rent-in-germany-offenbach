@@ -20,7 +20,7 @@
 <figure class="social-housing-container">
     <h3 class="number-social-housing">Obdachlosigkeit:<br>
         {selectedCity === "Offenbach" ? "Keine Zahlen vorhanden" : `${homelessPeople.toLocaleString('de-DE')} Menschen betroffen`}</h3>
-    <div class="house-icon-grid" style:min-height={minHeightHumansGrid}px role="group" aria-label="Representation of homeless people">
+    <div class="house-icon-grid" style:min-height={minHeightHumansGrid}px role="group" aria-label="Darstellung der Menge an obdachlosen Menschen">
         {#each peopleIconsArray as person}
             <div 
                 class="icon-wrapper" 
@@ -32,11 +32,11 @@
         {/each}
     </div>
     {#if noDataDisplay} 
-            <span
-                class="no-data-text"
-                >
-                Für Offenbach liegen für den Zeitraum keine Zahlen vor.
-            </span>
+        <aside
+            class="no-data-text"
+            >
+            Für Offenbach liegen für den Zeitraum keine Zahlen vor.
+        </aside>
         {/if}
     {#if !noDataDisplay}
         <figcaption>

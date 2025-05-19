@@ -4,7 +4,7 @@
     
 </script>
 
-<figure class="income-container">
+<div class="income-container">
     <h3 id="income-title" class="sub-titles">Wähle das monatliche Nettoeinkommen:</h3>
     <div class="income-buttons-container">
         {#each incomeLevels as level, index}
@@ -17,7 +17,7 @@
             </button>
         {/each}
     </div>
-</figure>
+</div>
 
 <style>
     .income-container {

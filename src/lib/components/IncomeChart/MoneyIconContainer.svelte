@@ -12,18 +12,18 @@
 
 <figure class="chart-article-container-2" aria-labelledby="income-title" aria-describedby="income-description">
     <figcaption id="income-title" class="sub-titles">Anteil der Miete am Haushaltseinkommen:</figcaption>
-    <p id="income-description" class="sr-only">This chart shows the percentage of income spent on rent. Each icon represents a portion of the income.</p>
+    <p id="income-description" class="sr-only">Dieser Chart zeigt den Anteil der Miete am Haushaltseinkommen</p>
     <p class="income-percentage" aria-live="polite">
         <span class:high={percentage >= 30}>{displayPercentage}%</span>
     </p>
-    <div class="money-icon-grid" role="group" aria-label="Money icons representing income spent on rent">
+    <div class="money-icon-grid" role="group" aria-label="Geld Icons die den Anteil an der Miete repräsentieren.">
         {#each moneyIcons as { isColored }}
             <div class="icon-wrapper" aria-hidden="true">
                 <MoneyIcon {isColored} />
             </div>
         {/each}
     </div>
-    <p class="sr-only">Total percentage of income spent on rent: {displayPercentage}%</p>
+    <p class="sr-only">Prozentualer Anteil des Einkommens für die Miete: {displayPercentage}%</p>
 </figure>
 
 <style>
