@@ -1,45 +1,52 @@
 <script>
+	import { render } from 'svelte/server';
     import HumanIcon from './HumanIcon.svelte';
     import { fade } from 'svelte/transition';
 
     let { 
-        homelessPeople, 
-        peopleIconsArray, 
-        minHeightHumansGrid, 
-        selectedCity,
+            homelessPeople, 
+            peopleIconsArray, 
+            minHeightHumansGrid, 
+            selectedCity,
+            noDataDisplay,
+            factorHomeless
         } 
     = $props();
 
-    $inspect(peopleIconsArray)
-        
-    let noDataAvailable = $state(true)
-
+    $inspect(noDataDisplay)
 
 </script>
 
-<div class="social-housing-container">
+<figure class="social-housing-container">
     <h3 class="number-social-housing">Obdachlosigkeit:<br>
         {selectedCity === "Offenbach" ? "Keine Zahlen vorhanden" : `${homelessPeople.toLocaleString('de-DE')} Menschen betroffen`}</h3>
-    <div class="house-icon-grid" style:min-height={minHeightHumansGrid}px>
+    <div class="house-icon-grid" style:min-height={minHeightHumansGrid}px role="group" aria-label="Representation of homeless people">
         {#each peopleIconsArray as person}
             <div 
                 class="icon-wrapper" 
                 transition:fade={{ duration: 1000 }}
-                >  
+                aria-hidden="true">  
                 <HumanIcon 
             />
             </div>
         {/each}
     </div>
-    {#if selectedCity === "Offenbach"} 
+    {#if noDataDisplay} 
             <span
                 class="no-data-text"
-                transition:fade={{ duration: 500 }}
                 >
                 Für Offenbach liegen für den Zeitraum keine Zahlen vor.
             </span>
-    {/if}
-</div>
+        {/if}
+    {#if !noDataDisplay}
+        <figcaption>
+            <div class="icon-wrapper">  
+                <HumanIcon />
+            </div>
+            <span>= {factorHomeless.toLocaleString("de-DE")} Obdachlose Menschen</span>
+        </figcaption>
+     {/if}
+    </figure>
 
 
 <style>   
@@ -72,6 +79,12 @@
     .icon-wrapper {
         width: 1.8rem;
         height: 1.8rem;
+    }
+
+      figcaption {
+        display: flex;
+        width: 100%;
+        align-items: center;
     }
 
     @media screen and (max-width: 1150px) {

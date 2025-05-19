@@ -38,7 +38,7 @@
 
 </script>
 
-<div class="chart" bind:clientWidth={width}>
+<figure class="chart" bind:clientWidth={width}>
   <h3 id="cities-chart-title" class="sub-titles">Miete pro Quadratmeter in ausgewählten Städten</h3>
   
   <div class="button-container">
@@ -104,7 +104,7 @@
       {/each}
     </g>
   </svg>
-</div>
+</figure>
 
 <style>
 

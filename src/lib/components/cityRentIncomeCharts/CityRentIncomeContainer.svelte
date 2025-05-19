@@ -54,7 +54,7 @@
         {text: "A-Z", function: (i) => triggerAnimation(sortAlphabetically, i)},
     ]
 </script>
-<div class="chart-container">
+<section class="chart-container">
     <RentChartCities 
         {data} 
         {sortAlphabetically} 
@@ -65,13 +65,14 @@
         {selectedIndex}
         {smallScreen}
         {animationKey}/>
-</div>
+</section>
 
 <style>
-    .chart-container{
+    .chart-container {
         padding: 5rem;
         background-color: #333333;
         color: white;
+        margin: 0 auto;
     }
 </style>
 

@@ -13,24 +13,32 @@
     
 </script>
 
-<div class="household-container">
-    <p class="sub-titles class" id="haushaltsgroesse-title">Wähle die Haushaltsgröße aus:</p>
-    <div class="person-icons-grid">
+<figure class="household-container" aria-labelledby="haushaltsgroesse-title">
+    <figcaption class="sub-titles" id="haushaltsgroesse-title">Wähle die Haushaltsgröße aus:</figcaption>
+    <div class="person-icons-grid" role="group" aria-label="Household size options">
         {#each iconsArray as icon, index}
             <div class="icon-container-wrapper">
-                <button 
-                    class="icon-container" 
+                <button
+                    class="icon-container"
                     class:selected={index === selectedIndex}
                     onclick={() => handleIconClick(index)}
-                    onkeydown={(e) => e.key === 'Enter' && handleIconClick(index)}
+                    onkeydown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            handleIconClick(index);
+                        }
+                    }}
+                    aria-pressed={index === selectedIndex}
+                    aria-label={`Select household size: ${icon[1]}`}
                 >
-                    <img src={icon[0]} alt="Person Icon" />
+                    <img src={icon[0]} alt="" aria-hidden="true" />
                 </button>
                 <p class="household-size-text">{icon[1]}</p>
             </div>
         {/each}
     </div>
-</div>
+</figure>
+
 
 <style>
     .household-container {

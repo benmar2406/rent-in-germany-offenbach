@@ -7,16 +7,18 @@
     let selectedIndex = $state(0);
     let selectedCityIndex = $state(0)
     let selectedCity = $state('Offenbach');
+    let noDataDisplay = $state(true);
     let factorHouses = $state(50);
+    let factorHomeless = $state(10000);
     let minHeightHousesGrid = $state(281);
-    let minHeightHumansGrid = $state(170);
+    let minHeightHumansGrid = $state(281);
     let socialHouses = $state(5348); 
     let totalIcons = $derived(socialHouses / factorHouses) // 2.5 million social houses / appartments
     let houseIcons = $derived(Array.from({ length: totalIcons }, (_, index) => ({
         index
     })));
 
-    let totalIconsPeople = $derived(homelessPeople / 10000) 
+    let totalIconsPeople = $derived(homelessPeople / factorHomeless) 
     let peopleIconsArray = $derived(Array.from({ length: totalIconsPeople }, (_, index) => ({
         index
     })));
@@ -38,16 +40,6 @@
             ],
     }
 
-    $effect(() => {
-        if (selectedCity === "Offenbach") {
-            minHeightHousesGrid = 281;
-            minHeightHumansGrid = 0;
-        } else {
-            minHeightHousesGrid = 570;
-            minHeightHumansGrid = 170;
-        }
-    })
-
     const handleYearClick = (index) => {
         selectedIndex = index;
         socialHouses = cities[selectedCity][index].apartments;
@@ -58,9 +50,21 @@
         selectedCityIndex = index;
         selectedCity = cityButtons[index];
         factorHouses = factors[index];
+
+         if (selectedCity === "Offenbach") {
+            minHeightHousesGrid = 281;
+            minHeightHumansGrid = 281;
+            setTimeout(() => {
+                noDataDisplay = true;
+            }, "1000")
+        } else {
+            minHeightHousesGrid = 570;
+            minHeightHumansGrid = 170;
+            noDataDisplay = false;
+        }
+        
         handleYearClick(selectedIndex);
     }
-
 </script>
 
 
@@ -96,7 +100,8 @@
             {peopleIconsArray} 
             {minHeightHumansGrid}
             {selectedCity}
-            
+            {noDataDisplay} 
+            {factorHomeless}
         />
     </div>
     <SocialHousingArticle />

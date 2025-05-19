@@ -18,9 +18,9 @@
 
 
 
-<div class="progress-container">
+<header class="progress-container">
   <div class="progress-bar" style:width={`${scrollProgress}%`}></div>
-</div>
+</header>
 
 <style>
   .progress-container {

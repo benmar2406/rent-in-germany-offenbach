@@ -82,7 +82,7 @@
   }
 </script>
 
-<div class="charts-container" bind:this={chartContainer}>
+<figure class="charts-container" bind:this={chartContainer}>
   <h3 class="sub-titles" id="chart-title">Mieten vs. Löhne</h3>
   <div class="chart-wrapper">
     <svg bind:this={svg} width={width} height={height}>
@@ -152,7 +152,7 @@
       </g>
     </svg>
   </div>
-</div>
+</figure>
 
 <style>
   .charts-container {

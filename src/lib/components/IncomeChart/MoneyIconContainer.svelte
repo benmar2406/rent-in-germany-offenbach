@@ -10,19 +10,21 @@
     }));
 </script>
 
-<div class="chart-article-container-2">
-    <p id="income-title" class="sub-titles">Anteil der Miete am Haushaltseinkommen:</p>
-        <p class="income-percentage" 
-            class:high={percentage >= 30}
-            >{displayPercentage}%</p>
-    <div class="money-icon-grid">
+<figure class="chart-article-container-2" aria-labelledby="income-title" aria-describedby="income-description">
+    <figcaption id="income-title" class="sub-titles">Anteil der Miete am Haushaltseinkommen:</figcaption>
+    <p id="income-description" class="sr-only">This chart shows the percentage of income spent on rent. Each icon represents a portion of the income.</p>
+    <p class="income-percentage" aria-live="polite">
+        <span class:high={percentage >= 30}>{displayPercentage}%</span>
+    </p>
+    <div class="money-icon-grid" role="group" aria-label="Money icons representing income spent on rent">
         {#each moneyIcons as { isColored }}
-            <div class="icon-wrapper">  
+            <div class="icon-wrapper" aria-hidden="true">
                 <MoneyIcon {isColored} />
             </div>
         {/each}
     </div>
-</div>
+    <p class="sr-only">Total percentage of income spent on rent: {displayPercentage}%</p>
+</figure>
 
 <style>
 
@@ -58,6 +60,18 @@
 
     #income-title {
         text-align: center;
+    }
+
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
     }
 
     @media (max-width: 1200px) {

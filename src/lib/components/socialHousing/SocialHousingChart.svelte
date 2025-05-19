@@ -13,25 +13,31 @@
 
 </script>
 
-<div class="social-housing-container">
+<figure class="social-housing-container">
     <h3 class="number-social-housing">Anzahl Sozialwohnungen:<br>{socialHouses.toLocaleString('de-DE')}</h3>
     <div 
         class="house-icon-grid"
         style:min-height={minHeightHousesGrid}px
-        >
+        role="group" 
+        aria-label="Representation of homeless people"
+    >
         {#each houseIcons as house}
-            <div class="icon-wrapper" transition:fade={{ duration: 1000 }}>  
+            <div 
+                class="icon-wrapper" 
+                transition:fade={{ duration: 1000 }}
+                aria-hidden="true"
+            >  
                 <HouseIcon />
             </div>
         {/each}
     </div>
-    <legend>
-        <div class="icon-wrapper">  
-            <HouseIcon style="display:inline"/>
-        </div>
-        <span>= {factorHouses.toLocaleString("de-DE")} Sozialwohnungen</span>
-    </legend>
-</div>
+        <figcaption>
+            <div class="icon-wrapper">  
+                <HouseIcon style="display:inline"/>
+            </div>
+            <span>= {factorHouses.toLocaleString("de-DE")} Sozialwohnungen</span>
+        </figcaption>
+</figure>
 
 
 <style>   
@@ -63,7 +69,7 @@
         height: 1.8rem;
     }
 
-    legend {
+    figcaption {
         display: flex;
         width: 100%;
         align-items: center;

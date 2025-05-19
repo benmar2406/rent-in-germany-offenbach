@@ -77,7 +77,7 @@
 
 <section class="einkommen" bind:this={elementToObserve}>
     <h2 class="title-einkommen">Wieviel vom Einkommen geht für die Miete drauf?</h2>
-    <div class="income-chart-container">
+    <figure class="income-chart-container">
         {#if observer && observer.isVisible}
             <div class="controls-container separator" in:fly={{ y: 200, duration: 2000 }}>
                 <PersonIconContainer
@@ -103,7 +103,7 @@
                 />
         </div>
         {/if} 
-    </div>
+    </figure>
     {#if observer && observer.isVisible}
             <div in:fly={{ y: 200, duration: 2000, delay: 2000 }}>
                 <IncomeArticle />
