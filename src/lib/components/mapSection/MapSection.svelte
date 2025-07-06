@@ -37,11 +37,6 @@
       { "Jahr": 2023, "Mietpreisindex": 124.7, "Reallohnindex": 107.3 },
       { "Jahr": 2024, "Mietpreisindex": 127.5, "Reallohnindex": 110.6 }
 ]
-
-
-
-
-
   let elementToObserve = $state();
   let observer = $state(); 
 

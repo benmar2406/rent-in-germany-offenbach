@@ -104,6 +104,11 @@
       {/each}
     </g>
   </svg>
+  <p class="source">
+    <a href="https://www.wohnungsboerse.net/mietspiegel-mietpreise" target="_blank" rel="noopener">
+      Quelle: Wohnungsbörse – Mietspiegel
+    </a>
+  </p>
 </figure>
 
 <style>

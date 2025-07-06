@@ -5,9 +5,16 @@
     <div>   
         <p>bis Ende letzten Jahres auf 3.328 verringert, was einer Veringerung von 40% entspricht.</p><p>Besonders in Großstädten ist der Rückgang spürbar, was zu einer zunehmenden Belastung für Haushalte mit niedrigem Einkommen führt.</p>
     </div>
-        <p>Dadurch gibt es trotz Neubaktivitäten einen Mangel an bezahlbaren Wohnungen. In der Vergangenheit führten auch Boomphasen auf dem Wohnungsmarkt nicht zu einer Entspannung.</p>
     <div>
-
+        <p>Dadurch gibt es trotz Neubaktivitäten einen Mangel an bezahlbaren Wohnungen. In der Vergangenheit führten auch Boomphasen auf dem Wohnungsmarkt nicht zu einer Entspannung.</p>
+    </div>
+         <div>
+        <p class="source">
+            Quellen: <a target="_blank" rel="noopener" href="https://www.bpb.de/kurz-knapp/zahlen-und-fakten/soziale-situation-in-deutschland/341826/sozialmietwohnungen">bpb</a> 
+            | <a target="_blank" rel="noopener" href="https://www.bundestag.de/presse/hib/kurzmeldungen-967750>Bundestag">Bundestag</a> 
+            | <a target="_blank" rel="noopener" href="https://www.bmwsb.bund.de/SharedDocs/pressemitteilungen/DE/2025/01/Wohnungslosenbericht.html">BMWSB</a>
+            | <a target="_blank" rel="noopener" href="https://www.bpb.de/kurz-knapp/zahlen-und-fakten/soziale-situation-in-deutschland/61797/wohnungslosigkeit/">bpb</a>
+        </p>
     </div>
 </article>
 

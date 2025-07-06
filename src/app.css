@@ -132,7 +132,7 @@ text {
 
 .source a {
   color: grey;
-}
+} 
 
 /* Responsive Typography */
 @media screen and (max-width: 768px) {
