@@ -74,7 +74,7 @@
   });
 </script>
 <figure id="map">
-  {#if isLoading} <div class="loading-screen"><p>Karte läd...<p></div>{/if}
+  {#if isLoading} <div class="loading-screen"><p>Karte läd...</p></div>{/if}
 </figure>
 
 <style>

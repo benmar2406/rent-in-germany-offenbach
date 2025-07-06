@@ -9,8 +9,6 @@
         minHeightHousesGrid
     } = $props();
 
-    $inspect(minHeightHousesGrid)
-
 </script>
 
 <figure class="social-housing-container">

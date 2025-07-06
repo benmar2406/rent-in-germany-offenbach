@@ -13,8 +13,6 @@
         } 
     = $props();
 
-    $inspect(noDataDisplay)
-
 </script>
 
 <figure class="social-housing-container">
