@@ -133,6 +133,7 @@
 
     .button-container {
         margin: 2rem auto;
+        margin-bottom: 0.2rem;
         height: 2rem;
         display: flex;
         justify-content: center;
