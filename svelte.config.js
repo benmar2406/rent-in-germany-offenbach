@@ -20,7 +20,7 @@ const config = {
 			strict: true
 		}),
 		paths: {
-			base: ''
+			base: dev ? '' : '/rent-in-germany-offenbach'
 		}
 	},
 	preprocess: vitePreprocess()
