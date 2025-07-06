@@ -73,6 +73,7 @@
     gap: 0;
     margin: 0;
     min-height: 100vh;
+    height: fit-content
   }
 
   .intro-article {

@@ -47,11 +47,11 @@
     .range([0, innerWidth]);
 
   $: y1 = d3.scaleLinear()
-    .domain([0, 130])
+    .domain([50, 130])
     .range([innerHeight, 0]);
 
   $: y2 = d3.scaleLinear()
-    .domain([0, 130])
+    .domain([50, 130])
     .range([innerHeight, 0]);
 
   $: line1 = d3.line()
