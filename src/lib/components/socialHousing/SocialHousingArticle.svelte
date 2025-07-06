@@ -11,7 +11,7 @@
          <div>
         <p class="source">
             Quellen: <a target="_blank" rel="noopener" href="https://www.bpb.de/kurz-knapp/zahlen-und-fakten/soziale-situation-in-deutschland/341826/sozialmietwohnungen">bpb</a> 
-            | <a target="_blank" rel="noopener" href="https://www.bundestag.de/presse/hib/kurzmeldungen-967750>Bundestag">Bundestag</a> 
+            | <a target="_blank" rel="noopener" href="https://www.bundestag.de/presse/hib/kurzmeldungen-967750">Bundestag</a> 
             | <a target="_blank" rel="noopener" href="https://www.bmwsb.bund.de/SharedDocs/pressemitteilungen/DE/2025/01/Wohnungslosenbericht.html">BMWSB</a>
             | <a target="_blank" rel="noopener" href="https://www.bpb.de/kurz-knapp/zahlen-und-fakten/soziale-situation-in-deutschland/61797/wohnungslosigkeit/">bpb</a>
         </p>
