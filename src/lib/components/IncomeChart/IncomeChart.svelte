@@ -101,14 +101,19 @@
                     {displayIncome} 
                     {percentage}
                 />
-        </div>
+            </div>
         {/if} 
+    <div>
+        <p class="source">
+        <a target="_blank" rel="noopener noreferrer" href="https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Wohnen/Tabellen/tabelle-wo6-mieten-haushaltsnettoeinkommen.html">Destatis (2025): Mieten, Mietbelastung, Haushaltsgröße und Haushaltsnettoeinkommen</a>
+        </p>
+    </div>
     </figure>
     {#if observer && observer.isVisible}
-            <div in:fly={{ y: 200, duration: 2000, delay: 2000 }}>
-                <IncomeArticle />
-            </div>
-        {/if}  
+        <div in:fly={{ y: 200, duration: 2000, delay: 2000 }}>
+            <IncomeArticle />
+        </div>
+    {/if}  
 </section>  
 
 <style>

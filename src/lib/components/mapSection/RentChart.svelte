@@ -47,11 +47,11 @@
     .range([0, innerWidth]);
 
   $: y1 = d3.scaleLinear()
-    .domain([0, 140])
+    .domain([0, 130])
     .range([innerHeight, 0]);
 
   $: y2 = d3.scaleLinear()
-    .domain([0, 140])
+    .domain([0, 130])
     .range([innerHeight, 0]);
 
   $: line1 = d3.line()
@@ -64,9 +64,9 @@
     .y(d => d.Reallohnindex !== null ? y2(d.Reallohnindex) : NaN)
     .curve(d3.curveMonotoneX);
 
-  $: if (gx) d3.select(gx).call(d3.axisBottom(x).ticks(Math.ceil(data.length / 4)).tickFormat(d3.format("d")));
-  $: if (gyLeft) d3.select(gyLeft).call(d3.axisLeft(y1).ticks(5));
-  $: if (gyRight) d3.select(gyRight).call(d3.axisRight(y2).ticks(5));
+  $: if (gx) d3.select(gx).call(d3.axisBottom(x).ticks(Math.ceil(data.length / 10)).tickFormat(d3.format("d")));
+  $: if (gyLeft) d3.select(gyLeft).call(d3.axisLeft(y1).ticks(3));
+  $: if (gyRight) d3.select(gyRight).call(d3.axisRight(y2).ticks(3));
 
   function showTooltip(event, content) {
 
@@ -148,10 +148,19 @@
           dy="-1em"
           fill="#2db8ca"
           text-anchor="middle"
-        >Reallohnindex (bis 2019)</text>
+        >Reallohnindex (ab 2007)</text>
+        <text
+          class="index"
+          x={innerWidth / 2}
+          y={innerHeight + 40} 
+          text-anchor="middle"
+        >Indexiert auf 2007 = 100</text>
       </g>
     </svg>
   </div>
+    <p class="source">
+      Destatis (2025): <a target="_blank" rel="noopener noreferrer" href="https://www.destatis.de/DE/Themen/Arbeit/Verdienste/Realloehne-Nettoverdienste/Tabellen/liste-reallohnindex.html#134650">Reallöhne und Nominallöhne</a> | <atarget="_blank" rel="noopener noreferrer" href="https://www-genesis.destatis.de/datenbank/online/table/61111-0003/table-toolbar/search/s/NjExMTEtMDAwMw==#filter=JTdCJTIyaGlkZUVtcHR5Q29scyUyMiUzQWZhbHNlJTJDJTIyaGlkZUVtcHR5Um93cyUyMiUzQWZhbHNlJTJDJTIyY2FwdGlvbiUyMiUzQSU1QiU3QiUyMnZhcmlhYmxlSWQlMjIlM0ElMjI2MTExMSUyMiUyQyUyMmlkJTIyJTNBJTIyZmlsdGVyLjAlMjIlMkMlMjJ2YWx1ZXNJZHMlMjIlM0ElNUIlMjI2MTExMSUyMiU1RCUyQyUyMmNoaWxkcmVuJTIyJTNBJTVCJTdCJTIydmFyaWFibGVJZCUyMiUzQSUyMkRJTlNHJTIyJTJDJTIyaWQlMjIlM0ElMjJmaWx0ZXIuMC4wJTIyJTJDJTIydmFsdWVzSWRzJTIyJTNBJTVCJTIyREclMjIlNUQlMkMlMjJjaGlsZHJlbiUyMiUzQSU1QiU3QiUyMnZhcmlhYmxlSWQlMjIlM0ElMjJQUkVJUzElMjIlMkMlMjJpZCUyMiUzQSUyMmZpbHRlci4wLjAuMCUyMiUyQyUyMnZhbHVlc0lkcyUyMiUzQSU1QiUyMlFNVSUyMiU1RCUyQyUyMmNoaWxkcmVuJTIyJTNBJTVCJTVEJTJDJTIyc2hvd0FzSW50ZXJsaW5lJTIyJTNBZmFsc2UlMkMlMjJpc0hpZGRlbiUyMiUzQWZhbHNlJTJDJTIyYmxvY2tDb2RlJTIyJTNBJTIyYzElMjIlMkMlMjJjYW5CZUVkaXRlZCUyMiUzQWZhbHNlJTJDJTIyY2FuQmVIaWRkZW4lMjIlM0FmYWxzZSUyQyUyMnBvc3NpYmxlUGxhY2VzJTIyJTNBJTVCJTVEJTdEJTVEJTJDJTIyc2hvd0FzSW50ZXJsaW5lJTIyJTNBZmFsc2UlMkMlMjJzaG93VmFyaWFibGUlMjIlM0FmYWxzZSUyQyUyMnNob3dWYXJpYWJsZVZhbHVlJTIyJTNBJTVCJTIyTEFCRUwlMjIlNUQlMkMlMjJzb3J0JTIyJTNBJTIyTmFtZUFzYyUyMiUyQyUyMmlzSGlkZGVuJTIyJTNBZmFsc2UlMkMlMjJibG9ja0NvZGUlMjIlM0ElMjJ2MSUyMiUyQyUyMmNhbkJlRWRpdGVkJTIyJTNBZmFsc2UlMkMlMjJjYW5CZUhpZGRlbiUyMiUzQWZhbHNlJTJDJTIycG9zc2libGVQbGFjZXMlMjIlM0ElNUIlNUQlN0QlNUQlMkMlMjJzaG93QXNJbnRlcmxpbmUlMjIlM0FmYWxzZSUyQyUyMmlzSGlkZGVuJTIyJTNBZmFsc2UlMkMlMjJibG9ja0NvZGUlMjIlM0ElMjJzMSUyMiUyQyUyMmNhbkJlRWRpdGVkJTIyJTNBZmFsc2UlMkMlMjJjYW5CZUhpZGRlbiUyMiUzQWZhbHNlJTJDJTIycG9zc2libGVQbGFjZXMlMjIlM0ElNUIlNUQlN0QlNUQlMkMlMjJyb3dIZWFkZXIlMjIlM0ElNUIlN0IlMjJ2YXJpYWJsZUlkJTIyJTNBJTIySkFIUiUyMiUyQyUyMmlkJTIyJTNBJTIycm93VGl0bGUuMCUyMiUyQyUyMnZhbHVlc0lkcyUyMiUzQSU1QiUyMjE5OTElMjIlMkMlMjIxOTkyJTIyJTJDJTIyMTk5MyUyMiUyQyUyMjE5OTQlMjIlMkMlMjIxOTk1JTIyJTJDJTIyMTk5NiUyMiUyQyUyMjE5OTclMjIlMkMlMjIxOTk4JTIyJTJDJTIyMTk5OSUyMiUyQyUyMjIwMDAlMjIlMkMlMjIyMDAxJTIyJTJDJTIyMjAwMiUyMiUyQyUyMjIwMDMlMjIlMkMlMjIyMDA0JTIyJTJDJTIyMjAwNSUyMiUyQyUyMjIwMDYlMjIlMkMlMjIyMDA3JTIyJTJDJTIyMjAwOCUyMiUyQyUyMjIwMDklMjIlMkMlMjIyMDEwJTIyJTJDJTIyMjAxMSUyMiUyQyUyMjIwMTIlMjIlMkMlMjIyMDEzJTIyJTJDJTIyMjAxNCUyMiUyQyUyMjIwMTUlMjIlMkMlMjIyMDE2JTIyJTJDJTIyMjAxNyUyMiUyQyUyMjIwMTglMjIlMkMlMjIyMDE5JTIyJTJDJTIyMjAyMCUyMiUyQyUyMjIwMjElMjIlMkMlMjIyMDIyJTIyJTJDJTIyMjAyMyUyMiUyQyUyMjIwMjQlMjIlNUQlMkMlMjJjaGlsZHJlbiUyMiUzQSU1QiU1RCUyQyUyMnNob3dBc0ludGVybGluZSUyMiUzQWZhbHNlJTJDJTIyc2hvd1ZhcmlhYmxlJTIyJTNBZmFsc2UlMkMlMjJzaG93VmFyaWFibGVWYWx1ZSUyMiUzQSU1QiUyMkxBQkVMJTIyJTVEJTJDJTIyc29ydCUyMiUzQSUyMk5hbWVBc2MlMjIlMkMlMjJpc0hpZGRlbiUyMiUzQWZhbHNlJTJDJTIyYmxvY2tDb2RlJTIyJTNBJTIydjIlMjIlMkMlMjJjYW5CZUVkaXRlZCUyMiUzQXRydWUlMkMlMjJjYW5CZUhpZGRlbiUyMiUzQWZhbHNlJTJDJTIycG9zc2libGVQbGFjZXMlMjIlM0ElNUIlNUQlN0QlNUQlMkMlMjJjb2x1bW5IZWFkZXIlMjIlM0ElNUIlN0IlMjJ2YXJpYWJsZUlkJTIyJTNBJTIyQ0MxM0EyJTIyJTJDJTIyaWQlMjIlM0ElMjJjb2xUaXRsZS4wJTIyJTJDJTIydmFsdWVzSWRzJTIyJTNBJTVCJTIyQ0MxMy0wNDExJTIyJTJDJTIyQ0MxMy0wNDExMCUyMiUyQyUyMkNDMTMtMDQxMiUyMiUyQyUyMkNDMTMtMDQxMjIlMjIlMkMlMjJDQzEzLTA0MSUyMiU1RCUyQyUyMmNoaWxkcmVuJTIyJTNBJTVCJTVEJTJDJTIyc2hvd0FzSW50ZXJsaW5lJTIyJTNBZmFsc2UlMkMlMjJzaG93VmFyaWFibGUlMjIlM0F0cnVlJTJDJTIyc2hvd1ZhcmlhYmxlVmFsdWUlMjIlM0ElNUIlMjJJRCUyMiUyQyUyMkxBQkVMJTIyJTVEJTJDJTIyc29ydCUyMiUzQSUyMk5hbWVBc2MlMjIlMkMlMjJpc0hpZGRlbiUyMiUzQWZhbHNlJTJDJTIyYmxvY2tDb2RlJTIyJTNBJTIydjMlMjIlMkMlMjJjYW5CZUVkaXRlZCUyMiUzQXRydWUlMkMlMjJjYW5CZUhpZGRlbiUyMiUzQWZhbHNlJTJDJTIycG9zc2libGVQbGFjZXMlMjIlM0ElNUIlNUQlN0QlNUQlMkMlMjJmaXhGaXJzdENvbHVtbnMlMjIlM0FmYWxzZSU3RA==">Verbraucherpreisindex für Deutschland</a>
+    </p>
 </figure>
 
 <style>
@@ -160,7 +169,6 @@
     max-width: 500px;
     min-width: 300px;
     margin: 1.8rem;
-    margin-bottom: 0; 
   }
 
   .charts-container h3 {
@@ -173,6 +181,10 @@
 
   svg {
     height: auto;
+  }
+
+  .index {
+    font-size: 0.8rem;
   }
 
   @media (max-width: 768px) {
