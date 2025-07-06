@@ -1,5 +1,5 @@
 <script>
-	/* By Connor Rothschild https://twitter.com/CL_Rothschild
+	/* Scrollytelling component by Connor Rothschild https://twitter.com/CL_Rothschild
 	Scrollytelling component from Russell Goldenberg https://twitter.com/codenberg/status/1432774653139984387 */
 	
   import { onMount } from 'svelte';
@@ -14,9 +14,8 @@
   let scrollProgress = $state(0);
 
   const citiesRent = [
-    { name: "Offenbach", price2010: 7.56, price2018: 11.68, price2025: 15.04 },
-    { name: "Frankfurt", price2010: 11.49, price2018: 16.78, price2025: 19.75 }
-]
+    { name: "Offenbach", price2010: 7.56, price2018: 11.68, price2025: 15.04 }
+  ]
   const steps = [
 		"<h1 class='main-title'>Wohnen in der Stadt<br><span>Ein Luxus?<span></h1>",
     "<p>Die Mieten in deutschen Städten steigen seit Jahren rasant, und für viele wird es immer schwieriger, sich ein Zuhause in urbanen Ballungszentren zu leisten. Auch im Rhein-Maingebiet – die durchschnittlichen Quadratmeterpreise für Mietwohnungen haben teils astronomische Höhen erreicht.</p>",

@@ -38,22 +38,16 @@
 
     .income-button {
         padding: 0.8rem 1.2rem;
-        color: white;
-        border: 2px solid white;
+        border: 2px solid;
         border-radius: 8px;
         font-family: 'Poppins', sans-serif;
         font-size: 0.9rem;
         font-weight: 600;
         transition: all 0.3s ease;
-        width: 100%;
+        width: 90%;
         text-align: left;
     }
-
-    .income-button:hover, .income-button.selected {
-        border-color: #ca3f2d;
-        cursor: pointer;
-        transform: translateX(5px);
-    }
+    
 
     @media (max-width: 1200px) {
         .income-button {
@@ -65,7 +59,5 @@
         .income-container {
             border-left: solid 1px grey;
         }
-
     }
-
 </style> 

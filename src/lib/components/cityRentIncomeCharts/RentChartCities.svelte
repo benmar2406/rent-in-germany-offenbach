@@ -109,19 +109,20 @@
 <style>
 
   .chart {
-    color: white;
-    fill: white;
+    color: var(--bright);
+    fill: var(--bright);
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0;
   }
 
   .x-axis .tick text {
     text-anchor: middle;
-    color: black;
+    color: var(--dark);
   }
 
   .bars rect {
-    fill: #ca3f2d;
+    fill: var(--main);
     stroke: none;
   }
 
@@ -136,7 +137,7 @@
   }
 
   .tick line {
-    stroke: #2db8ca;
+    stroke: var(--mainScnd);
     stroke-dasharray: 2;
     opacity: 1;
   }
@@ -168,17 +169,31 @@
     margin: 2rem;
   }
 
-  button {
-    color: white;
+  .chart {
+    color: var(--bright);
+    fill: var(--bright);
+    max-width: 1200px;
+    margin: 0 auto;
   }
 
-  @media screen and (max-width: 1200px) {
-        
-  .chart-description {
-    font-size: 0.5rem;
+  .source {
+    margin-top: 1rem;
   }
+
+  a {
+    color: var(--bright)
+  }
+
+  @media screen and (max-width: 1200px) {     
+    .chart-description {
+      font-size: 0.5rem;
+    }
+  
+   @media screen and (max-width: 600px) {  
+
+        .chart {
+            width: 85%;
+        }
+    }  
 }
-
-
-
 </style>

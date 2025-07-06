@@ -68,11 +68,18 @@
 </section>
 
 <style>
-    .chart-container {
+      .chart-container{
         padding: 5rem;
-        background-color: #333333;
-        color: white;
+        background-color: var(--dark);
+        color: var(--beige);
         margin: 0 auto;
+    }
+
+     @media screen and (max-width: 600px) {  
+
+        .chart-container {
+            padding: 4rem 0;
+        }
     }
 </style>
 

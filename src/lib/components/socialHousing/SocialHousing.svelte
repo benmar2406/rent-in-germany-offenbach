@@ -108,12 +108,13 @@
 </section>
 
 <style>
+    
     .social-housing-section {
-        background-color: #333333;
+        background-color: var(--dark);
         margin:  auto;
         padding-top: 2rem;
         padding-bottom: 4rem;
-        color: white;
+        color: var(--bright);
     }
 
     .social-housing-section h2 {
@@ -128,28 +129,21 @@
         margin: auto;
         gap: 0.8rem;
         max-width: 1200px;
-        min-height: 400px;
     }
 
     .button-container {
-        margin: 3rem auto;
-        margin-bottom: 1rem;
+        margin: 2rem auto;
         height: 2rem;
         display: flex;
         justify-content: center;
         align-items: center;
         width: 100%;
-    }
+  }
 
   .button-container button {
-    color: white;
     font-weight: 600;
-    transition: all 0.3s ease;
-  }
+}
 
-  .button-container button:hover, button.selected {
-    color: #ca3f2d;
-  }
 
  @media screen and (max-width: 760px) {
     .grid-layout {
@@ -164,4 +158,5 @@
         width: 95%;
     }
   }
-</style>
+
+  </style>
