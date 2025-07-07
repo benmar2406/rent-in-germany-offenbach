@@ -10,7 +10,7 @@
   let tooltip;
   
   let width;
-  let height = 350;
+  let height = 300;
   const marginTop = 20;
   const marginRight = 50;
   const marginBottom = 40;
@@ -20,6 +20,7 @@
     const observer = new ResizeObserver(entries => {
       const rect = entries[0].contentRect;
       width = rect.width;
+              map.resize();
     });
 
     observer.observe(chartContainer);

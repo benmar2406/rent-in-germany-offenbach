@@ -54,12 +54,7 @@
         <p>Gleichzeitig wächst die Schere zwischen Löhnen und Mieten: In vielen Städten steigen die Mietpreise deutlich schneller als die Einkommen.</p>
       </article>
       <div bind:this={elementToObserve}>
-        {#if observer && observer.isVisible}  
-        <div 
-            in:fade={{ duration: 700 }}>
-            <RentChart {data} />
-          </div> 
-        {/if}
+        <RentChart {data} />
     </div>     
     </div>
   </section>

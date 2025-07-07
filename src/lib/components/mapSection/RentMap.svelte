@@ -35,6 +35,7 @@
       isLoading = false;
       map.getCanvas().style.cursor = 'default';
       map.addControl(new mapboxgl.NavigationControl());
+      map.resize();
     });
 
     map.on('mousemove', (event) => {
