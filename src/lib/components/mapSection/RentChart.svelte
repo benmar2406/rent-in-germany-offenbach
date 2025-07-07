@@ -9,8 +9,8 @@
   let gx, gyLeft, gyRight;
   let tooltip;
   
-  let width = 0;
-  let height = 300;
+  let width;
+  let height = 350;
   const marginTop = 20;
   const marginRight = 50;
   const marginBottom = 40;

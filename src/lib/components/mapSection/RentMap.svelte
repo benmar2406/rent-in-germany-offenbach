@@ -81,7 +81,13 @@
   #map {
     width: 100%;
     min-height: 100vh;
+    height: 100%;
     top: 0;
+  }
+
+  :global(.mapboxgl-canvas) {
+    min-height: 100vh;
+    height: 100%;
   }
 
   .loading-screen {
