@@ -5,8 +5,13 @@ import { sveltekit } from '@sveltejs/kit/vite';
 const config = {
   plugins: [sveltekit()],
   server: {
-  allowedHosts: ['devserver-preview--mieten-offenbach.netlify.app'],
-}
+    host: true, // allows external access
+    // Optional: customize HMR client connection if needed
+    hmr: {
+      protocol: 'wss',
+      host: 'devserver-preview--mieten-offenbach.netlify.app',
+    }
+  }
 };
 
 export default config;
