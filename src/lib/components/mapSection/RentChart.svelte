@@ -69,6 +69,7 @@
   $: if (gyLeft) d3.select(gyLeft).call(d3.axisLeft(y1).ticks(3));
   $: if (gyRight) d3.select(gyRight).call(d3.axisRight(y2).ticks(3));
 
+  
   function showTooltip(event, content) {
 
     tooltip
