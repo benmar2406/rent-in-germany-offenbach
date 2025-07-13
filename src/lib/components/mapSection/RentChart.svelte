@@ -10,7 +10,7 @@
   let tooltip;
   
   let width;
-  let height = 300;
+  let height = 350;
   const marginTop = 20;
   const marginRight = 50;
   const marginBottom = 40;
@@ -20,7 +20,6 @@
     const observer = new ResizeObserver(entries => {
       const rect = entries[0].contentRect;
       width = rect.width;
-              map.resize();
     });
 
     observer.observe(chartContainer);
@@ -58,18 +57,17 @@
   $: line1 = d3.line()
     .x(d => x(d.Jahr))
     .y(d => y1(d.Mietpreisindex))
-    .curve(d3.curveMonotoneX);
+    .curve(d3.curveBasis);
 
   $: line2 = d3.line()
     .x(d => x(d.Jahr))
     .y(d => d.Reallohnindex !== null ? y2(d.Reallohnindex) : NaN)
-    .curve(d3.curveMonotoneX);
+    .curve(d3.curveBasis);
 
   $: if (gx) d3.select(gx).call(d3.axisBottom(x).ticks(Math.ceil(data.length / 10)).tickFormat(d3.format("d")));
   $: if (gyLeft) d3.select(gyLeft).call(d3.axisLeft(y1).ticks(3));
   $: if (gyRight) d3.select(gyRight).call(d3.axisRight(y2).ticks(3));
 
-  
   function showTooltip(event, content) {
 
     tooltip
